@@ -1,3 +1,3 @@
 export let copyright = {
-    text: "Made by: JM  - 2022"
+    text: "Made by: Los Mejores  - 2022"
 }
