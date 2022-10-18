@@ -24,7 +24,7 @@ header {
   color: var(--textColor);
 }
 
-nav a {
+nav Link {
   position: relative;
   left: 92%;
   font-weight: bold;
@@ -33,7 +33,7 @@ nav a {
   text-decoration: none;
 }
 
-nav a:hover {
+nav Link:hover {
   color: var(--secondaryColor);
 }
 
