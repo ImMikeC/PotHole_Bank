@@ -6,8 +6,8 @@ const Login = () => {
     return (
         <>
             <h1>Login</h1>
-            <Link to="/register"><Button /></Link>
-            <Link to="/muniregister"><Button /></Link>
+            <Link to="/municipality/register"><Button /></Link>
+            <Link to="/people/register"><Button /></Link>
         </>
     )
 }
