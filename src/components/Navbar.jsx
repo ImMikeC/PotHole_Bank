@@ -2,6 +2,7 @@ import img from "../img/PHB_logo.png";
 import React, { useRef } from "react";
 import { Link, NavLink } from "react-router-dom"
 import { FaBars, FaTimes } from "react-icons/fa";
+import Button from "./Button";
 import "../styles/Navbar.css";
 
 function Navbar() {
@@ -18,15 +19,11 @@ function Navbar() {
                 <NavLink to="/" end>Home</NavLink>
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/login">Log In</NavLink>
-                <Link to="/municipality"><button className="buttonMuni">Municipality</button></Link>
-                <Link to="/people"><button className="buttonPerson">People</button></Link>
-                <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-                    <FaTimes />
-                </button>
+                <Link to="/municipality"><Button className={"buttonMuni"} text={"Municipality"} /></Link>
+                <Link to="/people"><Button className={"buttonPeople"} text={"People"} /></Link>
+                <Button className={"nav-btn nav-close-btn"} text={<FaTimes />} onClick={showNavbar} />
             </nav>
-            <button className="nav-btn" onClick={showNavbar}>
-                <FaBars />
-            </button>
+            <Button className={"nav-btn"} text={<FaBars />} onClick={showNavbar} />
         </header>
     );
 }

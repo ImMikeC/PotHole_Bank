@@ -6,8 +6,8 @@ const Login = () => {
     return (
         <>
             <h1>Login</h1>
-            <Link to="/municipality/register"><Button /></Link>
-            <Link to="/people/register"><Button /></Link>
+            <Link to="/people/register"><Button className={"buttonPeopleRegister"} text={"Register People"} /></Link>
+            <Link to="/municipality/register"><Button className={"buttonMuniRegister"} text={"Register Muni"} /></Link>
         </>
     )
 }

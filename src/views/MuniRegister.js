@@ -5,7 +5,7 @@ const MuniRegister = () => {
     return (
         <>
             <h1>MuniRegister</h1>
-            <Button>Submit</Button>
+            <Button className={"buttonSubmit"} text={"Submit"} />
         </>
     )
 }

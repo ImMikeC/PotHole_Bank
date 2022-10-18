@@ -5,7 +5,7 @@ const PeopleRegister = () => {
     return (
         <>
             <h1>PeopleRegister</h1>
-            <Button>Submit</Button>
+            <Button className={"buttonSubmit"} text={"Submit"} />
         </>
     )
 }
