@@ -1,6 +1,4 @@
 import React from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-import "../styles/Showcase.css";
 
 const Showcase = () => {
 
@@ -17,43 +15,39 @@ const Showcase = () => {
     }
 
     return (
-        <Carousel>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src={showcasehome.imageURL1}
-                    alt="First slide"
-                />
-                <Carousel.Caption>
-                    <h3>{showcasehome.title1}</h3>
-                    <p>{showcasehome.subtitle1}</p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src={showcasehome.imageURL2}
-                    alt="Second slide"
-                />
-
-                <Carousel.Caption>
-                    <h3>{showcasehome.title2}</h3>
-                    <p>{showcasehome.subtitle2}</p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src={showcasehome.imageURL3}
-                    alt="Third slide"
-                />
-
-                <Carousel.Caption>
-                    <h3>{showcasehome.title3}</h3>
-                    <p>{showcasehome.subtitle3}</p>
-                </Carousel.Caption>
-            </Carousel.Item>
-        </Carousel>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src={showcasehome.imageURL1} class="d-block w-100" alt="Slide 1" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{showcasehome.title1}</h5>
+                        <p>{showcasehome.subtitle1}</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src={showcasehome.imageURL2} class="d-block w-100" alt="Slide 2" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{showcasehome.title2}</h5>
+                        <p>{showcasehome.subtitle2}</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src={showcasehome.imageURL3} class="d-block w-100" alt="Slide 3" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{showcasehome.title3}</h5>
+                        <p>{showcasehome.subtitle3}</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     );
 }
 
