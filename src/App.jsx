@@ -20,10 +20,7 @@ const App = ({ copyright }) => {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/municipality" element={<Municipality />} />
-        <Route
-          path="/municipality/register"
-          element={<MuniRegister color="#0E66A3" />}
-        />
+        <Route path="/municipality/register" element={<MuniRegister/>}/>
         <Route path="/people" element={<People />} />
         <Route path="/people/register" element={<PeopleRegister />} />
         <Route path="*" element={<NotFound />} />
