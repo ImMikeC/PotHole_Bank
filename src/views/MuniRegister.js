@@ -73,7 +73,7 @@ const MuniRegister = ({ color }) => {
           </label>
           <input
             type="email"
-            placeholder="Position"
+            placeholder="Municipality"
             class="form-control"
             id="inputEmail4"
           />
