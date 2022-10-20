@@ -9,7 +9,7 @@
     position: relative;
     padding: 15px;
     padding-left: 28px;
-    font-family: "Rokkitt", serif;
+    font-family: 'Lora', serif;
     font-weight: 600;
     font-size: 40px;
     color: #080808;
@@ -33,9 +33,4 @@
     transform: scaleX(-1);
     border-radius: 1.25rem !important;
     padding: 10px 0;
-}
-
-.aboutlinks {
-    background-color: turquoise;
-    height: 9vh;
 }

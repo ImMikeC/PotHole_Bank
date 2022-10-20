@@ -1,5 +1,6 @@
 import React from "react";
 import Showcase from "../components/Showcase";
+import { FaCamera, FaCarCrash, FaCheck, FaMapMarkedAlt } from "react-icons/fa";
 import "../styles/Home.css";
 
 const Home = () => {
@@ -13,29 +14,33 @@ const Home = () => {
                 <div className="col-md-6 homeinterest">
                     <div className="row">
                         <div className="col-md-3 homecard">
-                            <h1>Title</h1>
+                            <FaCamera/>
+                            <h2>Reporta baches</h2>
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde explicabo enim rem odio assumenda?
+                                Sube tus fotos y la ubicaión de los baches que deseas que se reparen.
                             </p>
                         </div>
                         <div className="col-md-3 homecard">
-                            <h1>Title</h1>
+                            <FaCarCrash/>
+                            <h2>Evitando accidentes</h2>
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde explicabo enim rem odio assumenda?
+                                Es muy importante el estado de las calles para evitar accidentes de transito.
                             </p>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-3 homecard">
-                            <h1>Title</h1>
+                            <FaCheck />
+                            <h2>Reparacion municipal</h2>
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde explicabo enim rem odio assumenda?
+                                Entregamos herramientas para hacer mas fácil el trabajo municipal para reparar las calles.
                             </p>
                         </div>
                         <div className="col-md-3 homecard">
-                            <h1>Title</h1>
+                            <FaMapMarkedAlt/>
+                            <h2>Mapa personalizado</h2>
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde explicabo enim rem odio assumenda?
+                                Puedes revisar todos los reportes y filtrarlos en nuestro mapa.
                             </p>
                         </div>
                     </div>
