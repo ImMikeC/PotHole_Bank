@@ -7,7 +7,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(120), nullable=False)
-    profile_id = db.Column(db.Integer, db.ForeignKey('Profile.id'))
+    profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
 
     def serialize(self):
         return {
@@ -83,7 +83,7 @@ class Coordinates(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     latitude = db.Column(db.String(20), nullable=False)
     longitude = db.Column(db.String(20))
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def serialize(self):
         return {
@@ -112,7 +112,7 @@ class Gallery(db.Model):
     title = db.Column(db.String(100), nullable="False")
     filename = db.Column(db.String(200), nullable=False)
     password = db.Column(db.Boolean(), default=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 
 
