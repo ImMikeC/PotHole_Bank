@@ -5,33 +5,32 @@ db = SQLAlchemy()
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100), unique=True, nullable=False)
+    email = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(120), nullable=False)
-    active = db.Column(db.Boolean(), default=True)
-    agendas = db.relationship('Agenda', cascade="all, delete", backref="user")
+    profile_id = db.Column(db.Integer, db.ForeignKey('Profile.id'))
 
     def serialize(self):
         return {
             "id": self.id,
-            "username": self.username,
-            "active": self.active
+            "email": self.email,
+            "password": self.password
         }
 
-    def serialize_with_agendas(self):
-        return {
-            "id": self.id,
-            "username": self.username,
-            "active": self.active,
-            "agendas": [agenda.serialize() for agenda in self.agendas]
-        }
+    # def serialize_with_profile(self):
+    #     return {
+    #         "id": self.id,
+    #         "email": self.email,
+    #         "password": self.password,
+    #         "profile_id": [profile_id.serialize() for profile_id in self.profile_id]
+    #     }
 
-    def serialize_with_agendas_with_contacts(self):
-        return {
-            "id": self.id,
-            "username": self.username,
-            "active": self.active,
-            "agendas": [agenda.serialize_with_contacts() for agenda in self.agendas]
-        }
+    # def serialize_with_profile_with_coordinates(self):
+    #     return {
+    #         "id": self.id,
+    #         "email": self.email,
+    #         "password": self.password,
+    #         "profile": [profile.serialize_with_coordinates() for profile in self.profile]
+    #     }
 
     def save(self):
         db.session.add(self)
@@ -45,28 +44,17 @@ class User(db.Model):
         db.session.commit()
 
     
-class Agenda(db.Model):
-    __tablename__ = 'agendas'
+class Profile(db.Model):
+    __tablename__ = 'profile'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    users_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
-    contacts = db.relationship('Contact', cascade="all, delete", backref="agenda")
+    profilename = db.Column(db.String(100), nullable=False)
+    #users_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    #coordinates = db.relationship('Contact', cascade="all, delete", backref="profile")
 
     def serialize(self):
         return {
             "id": self.id,
-            "title": self.title,
-            "users_id": self.users_id,
-            "owner": self.user.username
-        }
-
-    def serialize_with_contacts(self):
-        return {
-            "id": self.id,
-            "title": self.title,
-            "users_id": self.users_id,
-            "owner": self.user.username,
-            "contacts": [contact.serialize() for contact in self.contacts]
+            "profilename": self.profilename
         }
 
     def save(self):
@@ -80,21 +68,62 @@ class Agenda(db.Model):
         db.session.delete(self)
         db.session.commit() 
 
+"""     def serialize_with_coordinates(self):
+        return {
+            "id": self.id,
+            "profilename": self.profilename,
+            "coordinates": [contact.serialize() for contact in self.coordinates]
+        } """
 
-class Contact(db.Model):
-    __tablename__ = 'contacts'
+
+
+
+class Coordinates(db.Model):
+    __tablename__ = 'coordinates'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(100))
-    phone = db.Column(db.String(120), nullable=False)
-    agendas_id = db.Column(db.Integer, db.ForeignKey('agendas.id', ondelete='CASCADE'), nullable=False)
+    latitude = db.Column(db.String(20), nullable=False)
+    longitude = db.Column(db.String(20))
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
 
     def serialize(self):
         return {
             "id": self.id,
-            "name": self.name,
-            "email": self.email,
-            "phone": self.phone,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+            "user_id": self.user_id,
+
+        }
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+
+class Gallery(db.Model):
+    __tablename__ = 'galleries'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable="False")
+    filename = db.Column(db.String(200), nullable=False)
+    password = db.Column(db.Boolean(), default=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
+
+
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "filename": self.filename,
+            "password": self.password,
+            "user_id": self.user_id
+
         }
 
     def save(self):
@@ -117,17 +146,17 @@ serialize:
 
 {
     "id": 1,
-    "username": "lrodriguez@4geeks.co",
-    "active": true
+    "email": "lrodriguez@4geeks.co",
+    "password": true
 }
 
-serialize_with_agendas:
+serialize_with_profile:
 
 {
     "id": 1,
-    "username": "lrodriguez@4geeks.co",
-    "active": true,
-    "agendas": [ // serialize
+    "email": "lrodriguez@4geeks.co",
+    "password": true,
+    "profile": [ // serialize
         {
             "id": 1,
             "title": "4Geeks",
@@ -137,19 +166,19 @@ serialize_with_agendas:
     ]
 }
 
-serialize_with_agendas_with_contacts:
+serialize_with_profile_with_coordinates:
 
 {
     "id": 1,
-    "username": "lrodriguez@4geeks.co",
-    "active": true,
-    "agendas": [ // serialize_with_contacts
+    "email": "lrodriguez@4geeks.co",
+    "password": true,
+    "profile": [ // serialize_with_coordinates
         {
             "id": 1,
             "title": "4Geeks",
             "users_id": 1,
             "owner": "lrodriguez@4geeks.co",
-            "contacts": [
+            "coordinates": [
                 {
                     "id": 1,
                     "name": "John Doe",

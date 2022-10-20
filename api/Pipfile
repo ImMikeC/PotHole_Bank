@@ -14,6 +14,7 @@ flask-jwt-extended = "*"
 mako = "*"
 jinja2 = "*"
 sqlalchemy = "*"
+cloudinary = "*"
 
 [dev-packages]
 
