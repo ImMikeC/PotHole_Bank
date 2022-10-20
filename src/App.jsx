@@ -9,6 +9,7 @@ import Login from "./views/Login";
 import PeopleRegister from "./views/PeopleRegister";
 import MuniRegister from "./views/MuniRegister";
 import NotFound from "./views/NotFound";
+import Forgot from "./views/Forgot";
 import Footer from "./components/Footer";
 
 const App = ({ copyright }) => {
@@ -20,10 +21,11 @@ const App = ({ copyright }) => {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/municipality" element={<Municipality />} />
-        <Route path="/municipality/register" element={<MuniRegister/>}/>
+        <Route path="/municipality/register" element={<MuniRegister />} />
         <Route path="/people" element={<People />} />
         <Route path="/people/register" element={<PeopleRegister />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/change/passwoard" element={<Forgot />} />
       </Routes>
       <Footer footer={copyright} />
     </BrowserRouter>
