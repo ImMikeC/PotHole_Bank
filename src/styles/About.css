@@ -12,11 +12,12 @@
     font-family: 'Lora', serif;
     font-weight: 600;
     font-size: 40px;
-    color: #080808;
+    color:#282936;
 }
 
 .card {
     background-color: #D4D9E0 !important;
+    color: #282936;
     width: 60% !important;
     margin-bottom: 8%;
     border-radius: 30px;
