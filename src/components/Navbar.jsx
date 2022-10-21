@@ -24,7 +24,7 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <NavLink to="/" end>
-                            Homesd
+                            Home
                         </NavLink>
                         <NavLink to="/about">About</NavLink>
                         <NavLink to="/login">Log In</NavLink>
