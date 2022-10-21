@@ -1,19 +1,5 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Lora', serif;
-}
-
 body {
   background-color: #1e4a5f;
-}
-
-:root {
-  --mainColor: white;
-  --mainColorLight: #5767aa;
-  --secondaryColor: #db2b39;
-  --textColor: #1e4a5f;
 }
 
 nav Link:hover {
@@ -31,7 +17,7 @@ nav Link:hover {
 .buttonMuni {
   background-color: #0e66a3;
   position: relative;
-  left: 322%;
+  left: 651%;
   color: white;
   font-weight: bold;
   width: 110px;
@@ -43,7 +29,7 @@ nav Link:hover {
 .buttonPeople {
   background-color: #61831f;
   position: relative;
-  left: 341%;
+  left: 669%;
   color: white;
   font-weight: bold;
   width: 110px;
@@ -52,21 +38,23 @@ nav Link:hover {
   border-radius: 8px;
 }
 
-/* header .nav-btn {
-  padding: 5px;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--textColor);
-  visibility: hidden;
-  opacity: 0;
-  font-size: 1.8rem;
-} */
+.Home {
+  position: relative;
+  left: 180%;
+}
+.About {
+  position: relative;
+  left: 184%;
+}
+
+.Login {
+  position: relative;
+  left: 188%;
+}
 
 .footer {
   background-color: rgb(255, 255, 255);
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
 }
 .footer p {
   color: black;
