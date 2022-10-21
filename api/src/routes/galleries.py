@@ -54,7 +54,7 @@ def galleries():
 
           print(image)
 
-          resp = cloudinary.uploader.upload(image, folder="gallery")
+          resp = cloudinary.uploader.upload(image, folder="home")
 
           if not resp: return jsonify({ "msg": "error uploading image"}), 400
 
