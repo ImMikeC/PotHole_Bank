@@ -1,13 +1,14 @@
 import React from "react";
 import LinkLogin from "../components/LinkLogin";
 import { Link } from "react-router-dom";
+import "../styles/Login.css";
 
 const Login = () => {
   document.body.style.backgroundColor = "#1E4A5F";
   return (
     <>
-      <div className="vh-100 d-flex justify-content-center align-items-center">
-        <div className="col-md-4 mb-5 p-5 shadow-sm bg-light border rounded-3">
+      <div className="loginbox d-flex justify-content-center align-items-center">
+        <div className="loginitem col-md-4 p-5 shadow-sm bg-light border rounded-3">
           <h1 className="text-center mb-4 text-primary">Login</h1>
           <form>
             <div className="mb-3">
