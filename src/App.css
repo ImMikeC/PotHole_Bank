@@ -1,7 +1,12 @@
 body {
   background-color: #1e4a5f;
 }
-
+:root {
+  --mainColor: white;
+  --mainColorLight: #5767aa;
+  --secondaryColor: #db2b39;
+  --textColor: #282936;
+}
 nav Link:hover {
   color: var(--secondaryColor);
 }
