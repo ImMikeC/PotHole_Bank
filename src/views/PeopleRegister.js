@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import Button from "../components/Button";
 import "../styles/PeopleRegister.css";
+import PeopleDashboard from './PeopleDashboard'
+import { Link } from "react-router-dom";
 
 const PeopleRegister = () => {
 
@@ -8,6 +10,7 @@ const PeopleRegister = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [cambiar, setCambiar] = useState()
 
   const handleClick = () => {
     const opts = {
@@ -23,7 +26,7 @@ const PeopleRegister = () => {
     }
     fetch("https://5000-immikec-proyectofinal4g-4tm08m14h6d.ws-us72.gitpod.io/api/users", opts)
       .then(resp => {
-        if (resp.status === 200) return alert("Bienvenido a nuestro Sitio Web")//resp.json()
+        if (resp.status === 200) return /*alert("Bienvenido a nuestro Sitio Web")*/resp.json()
         else alert("Hubo un error")
       })
       .then()
@@ -79,8 +82,7 @@ const PeopleRegister = () => {
         <Button
           className={"buttonSubmit"}
           text={"Submit"}
-          onClick={handleClick}
-        />
+          onClick={handleClick} />
       </div>
     </div>
   );

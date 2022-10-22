@@ -8,6 +8,7 @@ import People from "./views/People";
 import Login from "./views/Login";
 import PeopleRegister from "./views/PeopleRegister";
 import MuniRegister from "./views/MuniRegister";
+import PeopleDashboard from "./views/PeopleDashboard";
 import NotFound from "./views/NotFound";
 import Forgot from "./views/Forgot";
 import Footer from "./components/Footer";
@@ -25,7 +26,8 @@ const App = ({ copyright }) => {
         <Route path="/people" element={<People />} />
         <Route path="/people/register" element={<PeopleRegister />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/change/passwoard" element={<Forgot />} />
+        <Route path="/change/password" element={<Forgot />} />
+        <Route path="/people/dashboard" element={<PeopleDashboard />} />
       </Routes>
       <Footer footer={copyright} />
     </BrowserRouter>

@@ -9,6 +9,8 @@ class User(db.Model):
     password = db.Column(db.String(120), nullable=False)
     profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
 
+    user_profile = relationship('Profile', foreign_keys='[User.profile_id]')
+
     def serialize(self):
         return {
             "id": self.id,
@@ -16,13 +18,13 @@ class User(db.Model):
             "password": self.password
         }
 
-    # def serialize_with_profile(self):
-    #     return {
-    #         "id": self.id,
-    #         "email": self.email,
-    #         "password": self.password,
-    #         "profile_id": [profile_id.serialize() for profile_id in self.profile_id]
-    #     }
+    def serialize_with_profile(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "password": self.password,
+            "profile_id": [profile_id.serialize() for profile_id in self.profile_id]
+        }
 
     # def serialize_with_profile_with_coordinates(self):
     #     return {
