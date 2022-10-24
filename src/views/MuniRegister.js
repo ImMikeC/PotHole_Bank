@@ -5,8 +5,8 @@ import "../styles/MuniRegister.css";
 const MuniRegister = () => {
   document.body.style.backgroundColor = "#0e66a3";
   return (
-    <div className="vh-100 d-flex justify-content-center align-items-center">
-      <div className="col-md-6  mb-5 p-5 bg-light">
+    <div className="MuniRegisterBox d-flex justify-content-center align-items-center">
+      <div className="col-md-6 p-5 bg-light">
         <h2 className="text-center text-primary">Register</h2>
         <div className="row g-3">
           <div className="col-md-6">
@@ -103,7 +103,13 @@ const MuniRegister = () => {
             />
           </div>
         </div>
-        <Button className={"buttonSubmit"} text={"Submit"} />
+        <div className="d-flex justify-content-center align-items-center">
+          <input
+            className="p-1 mt-3 btn btn-primary col-2"
+            type="submit"
+            value="Login"
+          />
+        </div>
       </div>
     </div>
   );
