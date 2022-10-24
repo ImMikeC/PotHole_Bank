@@ -3,6 +3,8 @@ import Button from "../components/Button";
 import "../styles/PeopleRegister.css";
 
 const PeopleRegister = () => {
+  
+  document.body.style.backgroundColor = "#61831F";
 
   //const { store, actions } = useContext(Context)
 

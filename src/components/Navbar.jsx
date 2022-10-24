@@ -41,14 +41,14 @@ function Navbar() {
             <li className="nav-item">
               <Link className="nav-link active" to="/municipality">
                 <Button
-                  className="btn btn-outline-success"
+                  className="btn btn-outline-primary"
                   text={"Municipality"}
                 />
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link active" to="/people">
-                <Button className="btn btn-outline-primary" text={"People"} />
+                <Button className="btn btn-outline-success" text={"People"} />
               </Link>
             </li>
           </ul>
