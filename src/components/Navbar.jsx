@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link to="/">
+        <Link className="navbar-brand" to="/">
           <img className="imgLogo" src={img} />
         </Link>
         <button
@@ -19,25 +19,38 @@ function Navbar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon text-dark"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <NavLink className="Home" to="/" end>
-              Home
-            </NavLink>
-            <NavLink className="About" to="/about">
-              About
-            </NavLink>
-            <NavLink className="Login" to="/login">
-              Log In
-            </NavLink>
-            <Link to="/municipality">
-              <Button className={"buttonMuni"} text={"Municipality"} />
-            </Link>
-            <Link to="/people">
-              <Button className={"buttonPeople"} text={"People"} />
-            </Link>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <NavLink className="nav-link active" to="/" end>
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link active" to="/about">
+                About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link active" to="/login">
+                Log In
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <Link to="/municipality">
+                <Button
+                  className="btn btn-outline-success"
+                  text={"Municipality"}
+                />
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/people">
+                <Button className="btn btn-outline-primary" text={"People"} />
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
