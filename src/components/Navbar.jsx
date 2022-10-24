@@ -1,4 +1,4 @@
-import img from "../img/PHB_logo.png";
+import img from "../img/PHB_logo1.png";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
@@ -51,6 +51,23 @@ function Navbar() {
                 <Button className="btn btn-outline-primary" text={"People"} />
               </Link>
             </li>
+          </ul>
+          <ul className="navbar-nav justify-content-end">
+            <NavLink className="Home" to="/" end>
+              Home
+            </NavLink>
+            <NavLink className="About" to="/about">
+              About
+            </NavLink>
+            <NavLink className="Login" to="/login">
+              Log In
+            </NavLink>
+            <Link to="/municipality">
+              <Button className={"buttonMuni"} text={"Municipality"} />
+            </Link>
+            <Link to="/people">
+              <Button className={"buttonPeople"} text={"People"} />
+            </Link>
           </ul>
         </div>
       </div>

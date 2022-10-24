@@ -11,7 +11,10 @@ import MuniRegister from "./views/MuniRegister";
 import NotFound from "./views/NotFound";
 import Forgot from "./views/Forgot";
 import Footer from "./components/Footer";
+import User from "./views/User";
 import UserAdmin from "./views/UserAdmin";
+import UserMuni from "./views/UserMuni";
+import UserPeople from "./views/UserPeople";
 
 const App = ({ copyright }) => {
   return (
@@ -27,7 +30,10 @@ const App = ({ copyright }) => {
         <Route path="/people/register" element={<PeopleRegister />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/change/passwoard" element={<Forgot />} />
+        <Route path="/user" element={<User />} />
         <Route path="/user/admin" element={<UserAdmin />} />
+        <Route path="/user/municipality" element={<UserMuni />} />
+        <Route path="/user/people" element={<UserPeople />} />
       </Routes>
       <Footer footer={copyright} />
     </BrowserRouter>
