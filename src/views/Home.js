@@ -7,7 +7,7 @@ const Home = () => {
     document.body.style.backgroundColor = "#1E4A5F";
     return (
         <div className="home">
-            <div className="row rowhome">
+            <div className="row rowhome d-flex justify-content-center">
                 <div className="col-md-5 showcase d-flex justify-content-center">
                     <div className="showcase-carousel">
                         <Showcase />

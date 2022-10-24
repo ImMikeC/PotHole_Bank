@@ -8,8 +8,8 @@ const Login = () => {
   return (
     <>
       <div className="loginbox d-flex justify-content-center align-items-center">
-        <div className="loginitem col-md-4 p-5 shadow-sm bg-light border rounded-3">
-          <h1 className="text-center mb-4 text-primary">Login</h1>
+        <div className="loginitem col-md-4 p-4 shadow-sm bg-light border rounded-3">
+          <h1 className="text-center text-primary">Login</h1>
           <form>
             <div className="mb-3">
               <label for="exampleInputEmail1" className="form-label">
@@ -33,7 +33,7 @@ const Login = () => {
               />
             </div>
             <p className="small">
-              <Link to="/change/passwoard">
+              <Link to="/change/password">
                 <a className="text-primary" href="forget-password.html">
                   Forgot password?
                 </a>
@@ -41,7 +41,7 @@ const Login = () => {
             </p>
             <div className="d-flex justify-content-center align-items-center">
               <input
-                className="p-1 mb-0 bg-primary text-white"
+                className="p-1 mb-0 btn btn-primary col-2"
                 type="submit"
                 value="Login"
               />

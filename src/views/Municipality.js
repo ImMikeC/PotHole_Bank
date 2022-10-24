@@ -7,7 +7,7 @@ const Municipality = () => {
     document.body.style.backgroundColor = "#0e66a3";
     return (
         <div className="municipality">
-            <div className="row rowmuni">
+            <div className="row rowmuni d-flex justify-content-center">
                 <div className="col-md-6 municards">
                     <div className="row topcards d-flex justify-content-around">
                         <div className="col-lg-3 municard">
