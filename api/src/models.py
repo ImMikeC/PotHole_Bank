@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-# from sqlalchemy import Column, ForeignKey, Integer, Table
+#from sqlalchemy import Column, ForeignKey, Integer, Table
 from sqlalchemy.orm import declarative_base, relationship
 db = SQLAlchemy()
 
@@ -10,7 +10,7 @@ class User(db.Model):
     email = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(120), nullable=False)
     profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
-    public_id = db.Column(db.String(120), unique=True)
+    public_id = db.Column(db.String(120))
 
     user_profile = db.relationship('Profile', foreign_keys='[User.profile_id]')
 
@@ -18,9 +18,7 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "password": self.password,
-            "profile_id": self.profile_id,
-            "public_id": self.public_id
+            "password": self.password
         }
 
     def serialize_with_profile(self):
@@ -116,7 +114,7 @@ class Coordinates(db.Model):
 class Gallery(db.Model):
     __tablename__ = 'galleries'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable="False")
+    title = db.Column(db.String(100), nullable=False)
     filename = db.Column(db.String(200), nullable=False)
     password = db.Column(db.Boolean(), default=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

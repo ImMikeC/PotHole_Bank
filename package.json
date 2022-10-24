@@ -44,6 +44,7 @@
     "bootstrap": "5.1",
     "cloudinary": "^1.32.0",
     "cloudinary-core": "^2.13.0",
+    "cors": "^2.8.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",

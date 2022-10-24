@@ -1,10 +1,13 @@
-from flask import Blueprint, jsonify, request
-from models import User, db
 import uuid
+from flask import Blueprint, jsonify, request, Flask
+from models import User, db
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from flask_cors import CORS, cross_origin
 
 bpUser = Blueprint('bpUser', __name__)
+
+app = Flask(__name__)
+CORS(app)
 
 
 @bpUser.route('/users', methods=['GET'])
@@ -12,6 +15,7 @@ def all_users():
     users = User.query.all()
     users = list(map(lambda user: user.serialize(), users))
     return jsonify(users), 200
+
 
 @bpUser.route('/users/<public_id>', methods=['GET'])
 def one_user(public_id):
@@ -28,8 +32,14 @@ def one_user(public_id):
 
     return jsonify({'user': user_data}), 200
 
+
+cors = CORS(app, resources={
+            r"/api/users": {"origins": "http://localhost/:5000"}})
+
+
 @bpUser.route('/users', methods=['POST'])
-def store_user():
+@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
+def create_user():
     data = request.get_json()
 
     hashed_password = generate_password_hash(data['password'], method='sha256')
@@ -53,9 +63,11 @@ def store_user():
     # user.save()
     # return jsonify(user.serialize()), 200
 
+
 @bpUser.route('/user/<id>', methods=['PUT'])
 def update_user():
     return ''
+
 
 @bpUser.route('/user/<id>', methods=['DELETE'])
 def delete_user():
@@ -84,8 +96,7 @@ def delete_user():
 #     return jsonify(user.serialize_with_agendas()), 200
 
 
-
-    #print(request.json.get('email'))
+# print(request.json.get('email'))
 #     email = User.query.get(email)
 #     password = request.json.get('password')
 #     users = User()
@@ -95,7 +106,7 @@ def delete_user():
 
 #     return jsonify(users()), 200
 
-    # return jsonify(user.serialize_with_users()), 200
+# return jsonify(user.serialize_with_users()), 200
 
 # @bpUser.route('/users/<int:id>/agendas/contacts', methods=['GET'])
 # def get_user_by_id_with_agendas_with_contacts(id):

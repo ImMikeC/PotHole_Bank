@@ -25,7 +25,6 @@ import Profile from "./views/sideviews/Profile";
 import Settings from "./views/sideviews/Settings";
 
 const App = ({ copyright }) => {
-<<<<<<< HEAD
   return (
     <BrowserRouter>
       <Navbar />
@@ -44,7 +43,6 @@ const App = ({ copyright }) => {
       <Footer footer={copyright} />
     </BrowserRouter>
   );
-=======
     return (
         <BrowserRouter>
             <Navbar />
@@ -76,7 +74,6 @@ const App = ({ copyright }) => {
             <Footer footer={copyright} />
         </BrowserRouter>
     );
->>>>>>> 4678bf9d16272df0ac9744f4c2dbf5b1bedfe3a5
 };
 
 export default App;

@@ -1,32 +1,32 @@
+# pylint: disable=unused-import
 import os
-
-import cloudinary
+import sqlite3
 from dotenv import load_dotenv
-from flask import Flask
-from flask_cors import CORS
-from flask_jwt_extended import JWTManager
+from flask import Flask, jsonify, request
 from flask_migrate import Migrate
+from flask_cors import CORS
+import cloudinary
+from models import db
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager
 
+
+from routes.main import bpMain
+from routes.user import bpUser
+from routes.profile import bpProfile
 from routes.coordinates import bpCoordinates
 from routes.galleries import bpGallery
-from routes.main import bpMain
-from routes.profile import bpProfile
-from routes.user import bpUser
-from models import db
-
 
 load_dotenv()
 
 app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'mysecretkey'
-
 app.url_map.strict_slashes = False
 app.config['DEBUG'] = True
 app.config['ENV'] = 'development'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/thinkpad490/Downloads/ProyectoFinal4Geeks/api/Pothole.db"
+#db = SQLAlchemy(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 """ class Agenda(db.Model):
