@@ -22,24 +22,24 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link active" to="/" end>
+          <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li className="nav-item mt-2">
+              <NavLink className="nav-link active" to="/">
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item mt-2">
               <NavLink className="nav-link active" to="/about">
                 About
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item mt-2">
               <NavLink className="nav-link active" to="/login">
                 Log In
               </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/municipality">
+              <Link className="nav-link active" to="/municipality">
                 <Button
                   className="btn btn-outline-success"
                   text={"Municipality"}
@@ -47,27 +47,10 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/people">
+              <Link className="nav-link active" to="/people">
                 <Button className="btn btn-outline-primary" text={"People"} />
               </Link>
             </li>
-          </ul>
-          <ul className="navbar-nav justify-content-end">
-            <NavLink className="Home" to="/" end>
-              Home
-            </NavLink>
-            <NavLink className="About" to="/about">
-              About
-            </NavLink>
-            <NavLink className="Login" to="/login">
-              Log In
-            </NavLink>
-            <Link to="/municipality">
-              <Button className={"buttonMuni"} text={"Municipality"} />
-            </Link>
-            <Link to="/people">
-              <Button className={"buttonPeople"} text={"People"} />
-            </Link>
           </ul>
         </div>
       </div>
