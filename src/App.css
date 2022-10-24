@@ -4,15 +4,15 @@ body {
 :root {
   --mainColor: white;
   --mainColorLight: #5767aa;
-  --secondaryColor: #db2b39;
+  --secondaryColor: #203F00;
   --textColor: #282936;
 }
-nav Link:hover {
+a:hover {
   color: var(--secondaryColor);
 }
 
 .active {
-  color: #0f2731;
+  color: #282936;
 }
 
 .imgLogo {
@@ -62,6 +62,6 @@ nav Link:hover {
   font-family: "Lora", serif;
 }
 .footer p {
-  color: black;
+  color: #0D0F0C;
   font-weight: bold;
 }

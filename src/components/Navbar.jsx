@@ -1,4 +1,4 @@
-import img from "../img/PHB_logo.png";
+import img from "../img/PHB_logo1.png";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
@@ -22,7 +22,7 @@ function Navbar() {
           <span className="navbar-toggler-icon text-dark"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav justify-content-end">
             <NavLink className="Home" to="/" end>
               Home
             </NavLink>
