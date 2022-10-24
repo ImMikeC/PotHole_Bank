@@ -24,7 +24,7 @@ const PeopleRegister = () => {
         "profile_id": 3,
       })
     }
-    fetch("https://5000-immikec-proyectofinal4g-4tm08m14h6d.ws-us72.gitpod.io/api/users", opts)
+    fetch("http://127.0.0.1:5000/api/users", opts)
       .then(resp => {
         if (resp.status === 200) return /*alert("Bienvenido a nuestro Sitio Web")*/resp.json()
         else alert("Hubo un error")

@@ -1,5 +1,8 @@
 from flask import Blueprint, jsonify, request
-from models import User, Profile
+from models import User, db
+import uuid
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 bpUser = Blueprint('bpUser', __name__)
 
@@ -9,6 +12,54 @@ def all_users():
     users = User.query.all()
     users = list(map(lambda user: user.serialize(), users))
     return jsonify(users), 200
+
+@bpUser.route('/users/<public_id>', methods=['GET'])
+def one_user(public_id):
+    user = User.query.filter_by(public_id=public_id).first()
+
+    if not user:
+        return jsonify({'message': 'No user found!'}), 403
+
+    user_data = {}
+    user_data['email'] = user.email
+    user_data['password'] = user.password
+    user_data['profile_id'] = user.profile_id
+    user_data['public_id'] = user.public_id
+
+    return jsonify({'user': user_data}), 200
+
+@bpUser.route('/users', methods=['POST'])
+def store_user():
+    data = request.get_json()
+
+    hashed_password = generate_password_hash(data['password'], method='sha256')
+
+    new_user = User(
+        email=data['email'],
+        password=hashed_password,
+        profile_id=data['profile_id'],
+        public_id=str(uuid.uuid4()),
+    )
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify({'message': 'New user created!'}), 200
+
+    # user = User()
+    # user.email = request.json.get('email')
+    # user.password = request.json.get('password')
+    # user.profile_id = request.json.get('profile_id')
+    # user.save()
+    # return jsonify(user.serialize()), 200
+
+@bpUser.route('/user/<id>', methods=['PUT'])
+def update_user():
+    return ''
+
+@bpUser.route('/user/<id>', methods=['DELETE'])
+def delete_user():
+    return ''
 
 # @bpUser.route('/users/agendas', methods=['GET'])
 # def all_users_with_agendas():
@@ -33,14 +84,7 @@ def all_users():
 #     return jsonify(user.serialize_with_agendas()), 200
 
 
-@bpUser.route('/users', methods=['POST'])
-def store_user():
-    user = User()
-    user.email = request.json.get('email')
-    user.password = request.json.get('password')
-    user.profile_id = request.json.get('profile_id')
-    user.save()
-    return jsonify(user.serialize()), 200
+
     #print(request.json.get('email'))
 #     email = User.query.get(email)
 #     password = request.json.get('password')

@@ -1,30 +1,32 @@
-from dotenv import load_dotenv
-from flask import Flask, jsonify, request
-from flask_migrate import Migrate
-from flask_cors import CORS
-from models import db
 import os
-import sqlite3
+
 import cloudinary
-from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+from flask import Flask
+from flask_cors import CORS
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 
-
-from routes.main import bpMain
-from routes.user import bpUser
-from routes.profile import bpProfile
 from routes.coordinates import bpCoordinates
 from routes.galleries import bpGallery
+from routes.main import bpMain
+from routes.profile import bpProfile
+from routes.user import bpUser
+from models import db
+
 
 load_dotenv()
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'mysecretkey'
+
 app.url_map.strict_slashes = False
 app.config['DEBUG'] = True
 app.config['ENV'] = 'development'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////workspace/ProyectoFinal4Geeks/api/database/Pothole.db"
-#db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/thinkpad490/Downloads/ProyectoFinal4Geeks/api/Pothole.db"
 
 
 """ class Agenda(db.Model):
