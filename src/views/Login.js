@@ -33,7 +33,7 @@ const Login = () => {
               />
             </div>
             <p className="small">
-              <Link to="/change/passwoard">
+              <Link to="/change/password">
                 <a className="text-primary" href="forget-password.html">
                   Forgot password?
                 </a>
