@@ -4,15 +4,15 @@ import "../styles/UserAdmin.css";
 
 const UserAdmin = () => {
     return (
-        <div className="row">
+        <div className="row gx-0">
             <div className="sidebar bg-success col-md-2 p-3">
                 <a href="#" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-light text-decoration-none">
                     <span className="sidebar-title">Admin</span>
                 </a>
                 <hr />
                 <ul className="sidebar-links nav flex-column mb-auto">
-                    <NavLink to="/user/admin/report">Report</NavLink>
                     <NavLink to="/user/admin/map">Map</NavLink>
+                    <NavLink to="/user/admin/report">Report</NavLink>
                     <NavLink to="/user/admin/edit">Edit</NavLink>
                     <NavLink to="/user/admin/List">List</NavLink>
                     <NavLink to="/user/admin/mod">Mod</NavLink>
@@ -26,7 +26,7 @@ const UserAdmin = () => {
                         <NavLink className="dropdown-item" to="/user/admin/profile">Profile</NavLink>
                         <NavLink className="dropdown-item" to="/user/admin/settings">Settings</NavLink>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><a className="dropdown-item" href="#">Sign out</a></li>
+                        <li><a className="dropdown-item" href="/login">Sign out</a></li>
                     </ul>
                 </div>
             </div>

@@ -34,7 +34,6 @@ const PeopleRegister = () => {
       })
   }
 
-  document.body.style.backgroundColor = "#1E4A5F";
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center">
       <div className="col-md-6  mb-5 p-5 bg-light">

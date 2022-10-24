@@ -15,8 +15,8 @@ import User from "./views/User";
 import UserAdmin from "./views/UserAdmin";
 import UserMuni from "./views/UserMuni";
 import UserPeople from "./views/UserPeople";
-import Report from "./views/sideviews/Report";
 import Map from "./views/sideviews/Map";
+import Report from "./views/sideviews/Report";
 import Edit from "./views/sideviews/Edit";
 import List from "./views/sideviews/List";
 import Mod from "./views/sideviews/Mod";
@@ -39,8 +39,8 @@ const App = ({ copyright }) => {
                 <Route path="/user">
                     <Route index element={<User/>} />
                     <Route path="admin" element={<UserAdmin />}>
-                        <Route path="report" element={<Report/>}/>
                         <Route path="map" element={<Map/>}/>
+                        <Route path="report" element={<Report/>}/>
                         <Route path="edit" element={<Edit/>}/>
                         <Route path="list" element={<List/>}/>
                         <Route path="mod" element={<Mod/>}/>
