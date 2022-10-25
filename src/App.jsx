@@ -36,44 +36,26 @@ const App = ({ copyright }) => {
         <Route path="/municipality/register" element={<MuniRegister />} />
         <Route path="/people" element={<People />} />
         <Route path="/people/register" element={<PeopleRegister />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/change/password" element={<Forgot />} />
-        <Route path="/people/dashboard" element={<PeopleDashboard />} />
+        <Route path="/user">
+          <Route index element={<User />} />
+          <Route path="admin" element={<UserAdmin />}>
+            <Route path="map" element={<Map />} />
+            <Route path="report" element={<Report />} />
+            <Route path="edit" element={<Edit />} />
+            <Route path="list" element={<List />} />
+            <Route path="mod" element={<Mod />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
+          <Route path="municipality" element={<UserMuni />} />
+          <Route path="people" element={<UserPeople />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer footer={copyright} />
     </BrowserRouter>
   );
-    return (
-        <BrowserRouter>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/municipality" element={<Municipality />} />
-                <Route path="/municipality/register" element={<MuniRegister />} />
-                <Route path="/people" element={<People />} />
-                <Route path="/people/register" element={<PeopleRegister />} />
-                <Route path="/change/password" element={<Forgot />} />
-                <Route path="/user">
-                    <Route index element={<User/>} />
-                    <Route path="admin" element={<UserAdmin />}>
-                        <Route path="map" element={<Map/>}/>
-                        <Route path="report" element={<Report/>}/>
-                        <Route path="edit" element={<Edit/>}/>
-                        <Route path="list" element={<List/>}/>
-                        <Route path="mod" element={<Mod/>}/>
-                        <Route path="profile" element={<Profile/>}/>
-                        <Route path="settings" element={<Settings/>}/>
-                    </Route>
-                    <Route path="municipality" element={<UserMuni />} />
-                    <Route path="people" element={<UserPeople />} />
-                </Route>
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer footer={copyright} />
-        </BrowserRouter>
-    );
 };
 
 export default App;
