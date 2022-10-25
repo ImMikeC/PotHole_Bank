@@ -28,7 +28,7 @@ def one_user(public_id):
     return jsonify({'user': user_data}), 200
 
 
-@bpUser.route('/users', methods=['POST'])
+@bpUser.route('/management/create-user', methods=['POST'])
 def create_user():
     print("__________________________________________")
     data = request.get_json()

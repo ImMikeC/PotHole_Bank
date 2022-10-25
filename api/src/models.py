@@ -7,10 +7,17 @@ db = SQLAlchemy()
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), nullable=False)
-    password = db.Column(db.String(120), nullable=False)
+    email = db.Column(db.String(120), nullable=False)# usuario persona
+    password = db.Column(db.String(120), nullable=False)# usuario persona
     profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
     public_id = db.Column(db.String(120))
+    muni_firstname = db.Column(db.String(120))
+    muni_lastname = db.Column(db.String(120))
+    muni_email = db.Column(db.String(120))
+    muni_phone = db.Column(db.String(10))
+    muni_position = db.Column(db.String(120))
+    municipality = db.Column(db.String(120))
+    muni_password = db.Column(db.String(120))
 
     user_profile = db.relationship('Profile', foreign_keys='[User.profile_id]')
 
