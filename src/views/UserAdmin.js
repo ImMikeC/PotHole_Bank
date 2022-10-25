@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import "../styles/UserAdmin.css";
 
 const UserAdmin = () => {
   return (
@@ -14,6 +15,10 @@ const UserAdmin = () => {
         <hr />
         <ul className="sidebar-links nav flex-column mb-auto">
           <NavLink to="/user/admin/map">Map</NavLink>
+          <NavLink to="/user/admin/report">Report</NavLink>
+          <NavLink to="/user/admin/edit">Edit</NavLink>
+          <NavLink to="/user/admin/List">List</NavLink>
+          <NavLink to="/user/admin/mod">Mod</NavLink>
         </ul>
         <hr />
         <div className="dropdown">

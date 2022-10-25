@@ -5,7 +5,7 @@ import { sendor } from "../../data/sensor";
 import "../../styles/Map.css";
 
 const Map = () => {
-  const position = [-70.64827, -33.45694];
+  const position = [-70.648, -33.45];
   return (
     <MapContainer center={position} zoom={5} scrollWheelZoom={false}>
       <TileLayer
