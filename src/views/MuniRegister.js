@@ -5,8 +5,8 @@ import "../styles/MuniRegister.css";
 const MuniRegister = () => {
   document.body.style.backgroundColor = "#0e66a3";
   return (
-    <div className="MuniRegisterBox d-flex justify-content-center align-items-center">
-      <div className="col-md-6 p-5 bg-light">
+    <div className="MuniRegisterBox d-flex justify-content-center align-items-center border-success">
+      <div className="col-md-6 p-4 bg-light">
         <h2 className="text-center text-primary">Register</h2>
         <div className="row g-3">
           <div className="col-md-6">

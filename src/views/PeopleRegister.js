@@ -1,41 +1,45 @@
 import React, { useContext, useState } from "react";
 import Button from "../components/Button";
 import "../styles/PeopleRegister.css";
+import PeopleDashboard from "./PeopleDashboard";
+import { Link } from "react-router-dom";
 
 const PeopleRegister = () => {
-  document.body.style.backgroundColor = "#61831F";
+  //document.body.style.backgroundColor = "#61831F";
 
   //const { store, actions } = useContext(Context)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [cambiar, setCambiar] = useState();
 
-  const handleClick = () => {
-    const opts = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        profile_id: 3,
-      }),
-    };
-    fetch(
-      "https://5000-immikec-proyectofinal4g-4tm08m14h6d.ws-us72.gitpod.io/api/users",
-      opts
-    )
-      .then((resp) => {
-        if (resp.status === 200)
-          return alert("Bienvenido a nuestro Sitio Web"); //resp.json()
-        else alert("Hubo un error");
-      })
-      .then()
-      .catch((error) => {
-        console.error("Hay un error, revisa", error);
-      });
+  const handleClick = async () => {
+    try {
+      console.log("Esto debe verse");
+      const opts = {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          profile_id: 3,
+        }),
+      };
+      const data = await fetch("http://localhost:5000/api/users", opts);
+      console.log({ data });
+      const result = await data.json();
+      console.log({ result });
+    } catch (error) {
+      console.error("Hay un error, revisa", error);
+    }
   };
+
+  //document.body.style.backgroundColor = "#1E4A5F";
 
   return (
     <div className="PeopleRegisterBox d-flex justify-content-center align-items-center">
@@ -82,11 +86,13 @@ const PeopleRegister = () => {
             />
           </div>
         </div>
+
         <div className="d-flex justify-content-center align-items-center">
           <input
             className="p-1 mt-3 btn btn-primary col-2"
             type="submit"
             value="Login"
+            onClick={handleClick}
           />
         </div>
       </div>

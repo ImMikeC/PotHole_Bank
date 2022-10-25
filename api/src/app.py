@@ -1,11 +1,12 @@
+# pylint: disable=unused-import
+import os
+import sqlite3
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_migrate import Migrate
 from flask_cors import CORS
-from models import db
-import os
-import sqlite3
 import cloudinary
+from models import db
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 
@@ -23,8 +24,9 @@ app.url_map.strict_slashes = False
 app.config['DEBUG'] = True
 app.config['ENV'] = 'development'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////workspace/ProyectoFinal4Geeks/api/database/Pothole.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite://///home/richard/ProyectoFinalFrontEnd/api/Pothole.db"
 #db = SQLAlchemy(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 """ class Agenda(db.Model):
@@ -39,7 +41,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////workspace/ProyectoFinal4Geek
 db.init_app(app)
 Migrate(app, db)
 jwt = JWTManager(app)
-CORS(app)
 
 cloudinary.config(
     cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'),
@@ -53,7 +54,7 @@ app.register_blueprint(bpUser, url_prefix='/api')
 app.register_blueprint(bpProfile, url_prefix='/api')
 app.register_blueprint(bpCoordinates, url_prefix='/api')
 app.register_blueprint(bpGallery, url_prefix='/api')
-
+CORS(app)
 if __name__ == '__main__':
     app.run()
 

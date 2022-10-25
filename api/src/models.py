@@ -1,4 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
+#from sqlalchemy import Column, ForeignKey, Integer, Table
+from sqlalchemy.orm import declarative_base, relationship
 db = SQLAlchemy()
 
 
@@ -8,6 +10,9 @@ class User(db.Model):
     email = db.Column(db.String(120), nullable=False)
     password = db.Column(db.String(120), nullable=False)
     profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
+    public_id = db.Column(db.String(120))
+
+    user_profile = db.relationship('Profile', foreign_keys='[User.profile_id]')
 
     def serialize(self):
         return {
@@ -16,13 +21,13 @@ class User(db.Model):
             "password": self.password
         }
 
-    # def serialize_with_profile(self):
-    #     return {
-    #         "id": self.id,
-    #         "email": self.email,
-    #         "password": self.password,
-    #         "profile_id": [profile_id.serialize() for profile_id in self.profile_id]
-    #     }
+    def serialize_with_profile(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "password": self.password,
+            "profile_id": [profile_id.serialize() for profile_id in self.profile_id]
+        }
 
     # def serialize_with_profile_with_coordinates(self):
     #     return {
@@ -109,7 +114,7 @@ class Coordinates(db.Model):
 class Gallery(db.Model):
     __tablename__ = 'galleries'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable="False")
+    title = db.Column(db.String(100), nullable=False)
     filename = db.Column(db.String(200), nullable=False)
     password = db.Column(db.Boolean(), default=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

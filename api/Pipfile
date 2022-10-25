@@ -17,6 +17,8 @@ sqlalchemy = "*"
 cloudinary = "*"
 pyams-auth-jwt = "*"
 pyjwt = "*"
+pylint = "*"
+cors = "*"
 
 [dev-packages]
 
