@@ -6,6 +6,19 @@ export const sendor = {
       Volt: "6.2",
       CT: "21.1",
       ST: "18.2",
+      Long: "-33.447",
+      Lat: "-70.63",
+      data: {
+        title: "Calles deterioradas",
+        description: "Mal trabajo realizado",
+      },
+    },
+    {
+      Date_Time: "2020-04-28 16:44:00",
+      Cod: "1",
+      Volt: "6.2",
+      CT: "21.1",
+      ST: "18.2",
       Long: "-72.9397",
       Lat: "5.72501",
       data: {
@@ -19,8 +32,8 @@ export const sendor = {
       Volt: "6.2",
       CT: "21.1",
       ST: "18.2",
-      Long: "-70.6482700",
-      Lat: "-33.4569400",
+      Long: "-33.452",
+      Lat: "-70.64",
       data: {
         title: "Calles deterioradas",
         description: "Mal trabajo realizado",
@@ -32,8 +45,8 @@ export const sendor = {
       Volt: "6.3",
       CT: "20.1",
       ST: "18.2",
-      Long: "51.505",
-      Lat: "-0.09",
+      Long: "-33.450",
+      Lat: "70.64",
       data: {
         title: "Calles deterioradas",
         description: "Mal trabajo realizado",

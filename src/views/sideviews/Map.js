@@ -5,9 +5,10 @@ import { sendor } from "../../data/sensor";
 import "../../styles/Map.css";
 
 const Map = () => {
-  const position = [-70.648, -33.45];
+  const position = [-33.451, -70.64];
+
   return (
-    <MapContainer center={position} zoom={5} scrollWheelZoom={false}>
+    <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
