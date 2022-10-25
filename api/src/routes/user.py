@@ -2,13 +2,8 @@ import uuid
 from flask import Blueprint, jsonify, request, Flask
 from models import User, db
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_cors import CORS, cross_origin
 
 bpUser = Blueprint('bpUser', __name__)
-
-app = Flask(__name__)
-CORS(app)
-
 
 @bpUser.route('/users', methods=['GET'])
 def all_users():
@@ -33,14 +28,12 @@ def one_user(public_id):
     return jsonify({'user': user_data}), 200
 
 
-cors = CORS(app, resources={
-            r"/api/users": {"origins": "http://localhost/:5000"}})
-
-
 @bpUser.route('/users', methods=['POST'])
-@cross_origin(origin='localhost', headers=['Content- Type', 'Authorization'])
 def create_user():
+    print("__________________________________________")
     data = request.get_json()
+    print(data)
+    print("__________________________________________")
 
     hashed_password = generate_password_hash(data['password'], method='sha256')
 

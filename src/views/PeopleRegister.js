@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "../components/Button";
 import "../styles/PeopleRegister.css";
-import PeopleDashboard from './PeopleDashboard'
+import PeopleDashboard from "./PeopleDashboard";
 import { Link } from "react-router-dom";
 
 const PeopleRegister = () => {
@@ -9,36 +9,35 @@ const PeopleRegister = () => {
 
   //const { store, actions } = useContext(Context)
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [cambiar, setCambiar] = useState()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cambiar, setCambiar] = useState();
 
-
-  const handleClick = () => {
-    console.log("Esto debe verse")
-    const opts = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", 'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify({
-        "email": email,
-        "password": password,
-        "profile_id": 3,
-
-      })
+  const handleClick = async () => {
+    try {
+      console.log("Esto debe verse");
+      const opts = {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          profile_id: 3,
+        }),
+      };
+      const data = await fetch("http://localhost:5000/api/users", opts);
+      console.log({ data });
+      const result = await data.json();
+      console.log({ result });
+    } catch (error) {
+      console.error("Hay un error, revisa", error);
     }
-    fetch("http://127.0.0.1:5000/users", opts)
-      .then(resp => {
-        if (resp.status === 200) return resp.json()
-        else alert("Hubo un error")
-      })
-      .then()
-      .catch(error => {
-        console.error("Hay un error, revisa", error)
-      })
-  }
-
+  };
 
   //document.body.style.backgroundColor = "#1E4A5F";
 
@@ -87,7 +86,6 @@ const PeopleRegister = () => {
             />
           </div>
         </div>
-
 
         <div className="d-flex justify-content-center align-items-center">
           <input
