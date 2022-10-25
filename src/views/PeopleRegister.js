@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import Button from "../components/Button";
 import "../styles/PeopleRegister.css";
-import PeopleDashboard from "./PeopleDashboard";
-import { Link } from "react-router-dom";
 
 const PeopleRegister = () => {
   //document.body.style.backgroundColor = "#61831F";
@@ -11,7 +9,6 @@ const PeopleRegister = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cambiar, setCambiar] = useState();
 
   const handleClick = async () => {
     try {

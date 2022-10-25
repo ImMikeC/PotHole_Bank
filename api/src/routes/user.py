@@ -57,14 +57,32 @@ def create_user():
     # return jsonify(user.serialize()), 200
 
 
-@bpUser.route('/user/<id>', methods=['PUT'])
-def update_user():
-    return ''
+@bpUser.route('/management/<email>', methods=['PUT'])
+def update_user(email):
 
+    user = User.query.filter_by(email=email).first()
 
-@bpUser.route('/user/<id>', methods=['DELETE'])
-def delete_user():
-    return ''
+    if not user:
+        return jsonify({'message': 'No email found'})
+
+    #user.password = password
+    user.profile_id = 1
+    db.session.commit()
+
+    return jsonify({'message': 'Usuario actualizado'})
+
+@bpUser.route('/management/<email>', methods=['DELETE'])
+def delete_user(email):
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        return jsonify({'message': 'Correo no encontrado'})
+
+    db.session.delete(user)
+    db.session.commit()
+
+    return jsonify({'message': 'El usuario ha sido eliminado'})
 
 # @bpUser.route('/users/agendas', methods=['GET'])
 # def all_users_with_agendas():
