@@ -1,4 +1,9 @@
-.leaflet-container {
+.mapbox {
   width: 100%;
   height: 80vh;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 70%;
 }
