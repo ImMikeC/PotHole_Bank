@@ -30,7 +30,10 @@ const PeopleRegister = () => {
           profile_id: 3,
         }),
       };
-      const data = await fetch("http://localhost:5000/api/management/create-user", opts);
+      const data = await fetch(
+        "http://localhost:5000/api/management/create-user",
+        opts
+      );
       console.log({ data });
       const result = await data.json();
       console.log({ result });
@@ -89,9 +92,9 @@ const PeopleRegister = () => {
 
         <div className="d-flex justify-content-center align-items-center">
           <input
-            className="p-1 mt-3 btn btn-primary col-2"
+            className="p-1 mt-3 btn btn-primary col-3"
             type="submit"
-            value="Login"
+            value="Register"
             onClick={handleClick}
           />
         </div>
