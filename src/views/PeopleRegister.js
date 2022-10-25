@@ -1,11 +1,9 @@
 import React, { useContext, useState } from "react";
-import Button from "../components/Button";
 import "../styles/PeopleRegister.css";
-import PeopleDashboard from "./PeopleDashboard";
 import { Link } from "react-router-dom";
 
 const PeopleRegister = () => {
-  //document.body.style.backgroundColor = "#61831F";
+  document.body.style.backgroundColor = "#61831F";
 
   //const { store, actions } = useContext(Context)
 
@@ -38,8 +36,6 @@ const PeopleRegister = () => {
       console.error("Hay un error, revisa", error);
     }
   };
-
-  //document.body.style.backgroundColor = "#1E4A5F";
 
   return (
     <div className="PeopleRegisterBox d-flex justify-content-center align-items-center">

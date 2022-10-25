@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./views/Home";
@@ -8,7 +8,6 @@ import People from "./views/People";
 import Login from "./views/Login";
 import PeopleRegister from "./views/PeopleRegister";
 import MuniRegister from "./views/MuniRegister";
-import PeopleDashboard from "./views/PeopleDashboard";
 import NotFound from "./views/NotFound";
 import Forgot from "./views/Forgot";
 import Footer from "./components/Footer";
@@ -17,8 +16,6 @@ import UserAdmin from "./views/UserAdmin";
 import UserMuni from "./views/UserMuni";
 import UserPeople from "./views/UserPeople";
 import Map from "./views/sideviews/Map";
-import Report from "./views/sideviews/Report";
-import Edit from "./views/sideviews/Edit";
 import List from "./views/sideviews/List";
 import Mod from "./views/sideviews/Mod";
 import Profile from "./views/sideviews/Profile";
@@ -41,8 +38,6 @@ const App = ({ copyright }) => {
           <Route index element={<User />} />
           <Route path="admin" element={<UserAdmin />}>
             <Route path="map" element={<Map />} />
-            <Route path="report" element={<Report />} />
-            <Route path="edit" element={<Edit />} />
             <Route path="list" element={<List />} />
             <Route path="mod" element={<Mod />} />
             <Route path="profile" element={<Profile />} />
