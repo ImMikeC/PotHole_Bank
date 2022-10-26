@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import Button from "../components/Button";
 import "../styles/PeopleRegister.css";
 
+import { Link } from "react-router-dom";
+
 const PeopleRegister = () => {
-  //document.body.style.backgroundColor = "#61831F";
+  document.body.style.backgroundColor = "#61831F";
 
   //const { store, actions } = useContext(Context)
 
@@ -27,7 +28,10 @@ const PeopleRegister = () => {
           profile_id: 3,
         }),
       };
-      const data = await fetch("http://localhost:5000/api/management/create-user", opts);
+      const data = await fetch(
+        "http://localhost:5000/api/management/create-user",
+        opts
+      );
       console.log({ data });
       const result = await data.json();
       console.log({ result });
@@ -35,8 +39,6 @@ const PeopleRegister = () => {
       console.error("Hay un error, revisa", error);
     }
   };
-
-  //document.body.style.backgroundColor = "#1E4A5F";
 
   return (
     <div className="PeopleRegisterBox d-flex justify-content-center align-items-center">
@@ -86,9 +88,9 @@ const PeopleRegister = () => {
 
         <div className="d-flex justify-content-center align-items-center">
           <input
-            className="p-1 mt-3 btn btn-primary col-2"
+            className="p-1 mt-3 btn btn-primary col-3"
             type="submit"
-            value="Login"
+            value="Register"
             onClick={handleClick}
           />
         </div>

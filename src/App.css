@@ -2,6 +2,10 @@ body {
   background-color: #1e4a5f;
 }
 
+.row {
+  margin: 0 !important;
+}
+
 .active {
   color: #282936;
 }
