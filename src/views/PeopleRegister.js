@@ -27,7 +27,7 @@ const PeopleRegister = () => {
           profile_id: 3,
         }),
       };
-      const data = await fetch("http://localhost:5000/api/management/create-user", opts);
+      const data = await fetch(`${process.env.API_URL}api/management/create-user`, opts);
       console.log({ data });
       const result = await data.json();
       console.log({ result });

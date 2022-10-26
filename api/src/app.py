@@ -24,7 +24,7 @@ app.url_map.strict_slashes = False
 app.config['DEBUG'] = True
 app.config['ENV'] = 'development'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/thinkpad490/Downloads/ProyectoFinal4Geeks/api/Pothole.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////workspace/Final_Project_II/api/Pothole.db"
 #db = SQLAlchemy(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
