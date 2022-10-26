@@ -1,6 +1,6 @@
-from flask import Blueprint, request, jsonify
-from models import Coordinates
-import cloudinary.uploader
+from flask import Blueprint, jsonify, request, Flask
+from models import Coordinates, db
+
 
 
 bpCoordinates = Blueprint('bpCoordinates', __name__)
@@ -8,67 +8,52 @@ bpCoordinates = Blueprint('bpCoordinates', __name__)
 @bpCoordinates.route('/coordinates', methods=['GET'])
 def coordinates():
           coordinates = Coordinates.query.all()
-          coordinates = list(map(lambda imagen: imagen.serialize(), coordinates))
+          coordinates = list(map(lambda crdnt: crdnt.serialize(), coordinates))
           return jsonify(coordinates), 200
 
-        # if request.method == 'POST':
-        
-        # title = request.form['title']
-        # active = request.form['active']
-        # image = request.files['image']
+@bpCoordinates.route('/coordinates/input-data', methods=['POST'])
+def create_coord():
+    data = request.get_json()
 
-        # resp = cloudinary.uploader.upload(image, folder="gallery")
+    new_coord = Coordinates(
+        latitude=data['latitude'],
+        longitude=data['longitude'],
+        imageurl=data['imageurl'],
+        state=data['state'],
+    )
 
-        # if not resp: return jsonify({ "msg": "error uploading image"}), 400
+    db.session.add(new_coord)
+    db.session.commit()
 
-        # gallery_image = Gallery()
-        # gallery_image.title = title
-        # gallery_image.active = True if active == 'true' else False
-        # gallery_image.filename = resp['secure_url']
-        # gallery_image.save()
-
-        # return jsonify(gallery_image.serialize()), 200
+    return jsonify({'message': 'New coordinate created!'}), 200
 
 
-    if request.method == 'POST':
-        
-        title = request.form['title']
-        active = request.form['active']
-        images = request.files.getlist("images")
+@bpCoordinates.route('/coordinates/<int:id>/update-data', methods=['PUT'])
+def update_coord(id):
 
-        print(images)
-        data = []
+    coord = Coordinates.query.filter_by(id=id).first()
 
-        for image in images:
+    if not coord:
+        return jsonify({'message': 'No id found'})
 
-          print(image)
+    #user.password = password
+    coord.state = 'reparado'
+    db.session.commit()
 
-          resp = cloudinary.uploader.upload(image, folder="coordinates")
+    return jsonify({'message': 'Estado actualizado'})
 
-          if not resp: return jsonify({ "msg": "error uploading image"}), 400
+@bpCoordinates.route('/coordinates/<int:id>/delete-data', methods=['DELETE'])
+def delete_coord(id):
 
-          gallery_image = Coordinates()
-          gallery_image.title = title
-          gallery_image.active = True if active == 'true' else False
-          gallery_image.filename = resp['secure_url']
-          gallery_image.save()
+    coord = Coordinates.query.filter_by(id=id).first()
 
-          data.append(coordinates_image.serialize())
+    if not coord:
+        return jsonify({'message': 'Id not found'})
 
-        return jsonify(data), 200
+    db.session.delete(coord)
+    db.session.commit()
 
-
-@bpCoordinates.route('/coordinates/<int:id>', methods=['PUT'])
-def coordinates_update_active(id):
-
-        active = request.json.get('active')
-
-        gallery_image = Coordinates.query.get(id)
-        gallery_image.active = active
-        gallery_image.update()
-
-        return jsonify(coordinates_image.serialize()), 200
-
+    return jsonify({'message': 'The coordinate has been deleted'})
 
 
 """ 

@@ -5,5 +5,5 @@ bpMain = Blueprint('bpMain', __name__)
 @bpMain.route('/')
 def main():
     return jsonify({
-        "message": "Welcome to my REST API with FLASK"
+        "message": "Welcome to our PotHole API"
     }), 200

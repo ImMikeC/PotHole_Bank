@@ -66,7 +66,8 @@ class Profile(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "profilename": self.profilename
+            "profilename": self.profilename,
+            
         }
 
     def save(self):
@@ -95,7 +96,7 @@ class Coordinates(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     latitude = db.Column(db.String(20), nullable=False)
     longitude = db.Column(db.String(20))
-    imageurl = db.Column(db.String(200))
+    imageurl = db.Column(db.String(20))
     state = db.Column(db.String(20))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
@@ -105,10 +106,8 @@ class Coordinates(db.Model):
             "longitude": self.longitude,
             "imageurl": self.imageurl,
             "state": self.state,
-            #"user_id": self.user_id,           
 
         }
-
 
     def save(self):
         db.session.add(self)
@@ -152,61 +151,3 @@ class Gallery(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
-
-
-
-'''
-
-serialize:
-
-{
-    "id": 1,
-    "email": "lrodriguez@4geeks.co",
-    "password": true
-}
-
-serialize_with_profile:
-
-{
-    "id": 1,
-    "email": "lrodriguez@4geeks.co",
-    "password": true,
-    "profile": [ // serialize
-        {
-            "id": 1,
-            "title": "4Geeks",
-            "users_id": 1,
-            "owner": "lrodriguez@4geeks.co"
-        }
-    ]
-}
-
-serialize_with_profile_with_coordinates:
-
-{
-    "id": 1,
-    "email": "lrodriguez@4geeks.co",
-    "password": true,
-    "profile": [ // serialize_with_coordinates
-        {
-            "id": 1,
-            "title": "4Geeks",
-            "users_id": 1,
-            "owner": "lrodriguez@4geeks.co",
-            "coordinates": [
-                {
-                    "id": 1,
-                    "name": "John Doe",
-                    "email": "john.doe@gmail.com,
-                    "phone": "+1 111 111 11"
-                }
-            ]
-        }
-    ]
-}
-
-
-
-
-'''

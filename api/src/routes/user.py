@@ -30,17 +30,15 @@ def one_user(public_id):
 
 @bpUser.route('/management/create-user', methods=['POST'])
 def create_user():
-    print("__________________________________________")
     data = request.get_json()
     print(data)
-    print("__________________________________________")
 
     hashed_password = generate_password_hash(data['password'], method='sha256')
 
     new_user = User(
         email=data['email'],
         password=hashed_password,
-        profile_id=data['profile_id'],
+        profile_id=3,
         public_id=str(uuid.uuid4()),
     )
 
