@@ -8,7 +8,12 @@
   height: 70%;
 }
 
-img {
+.imagen {
   width: 100px;
   height: 100px;
+}
+
+.report {
+  width: 50%;
+  height: 40%;
 }
