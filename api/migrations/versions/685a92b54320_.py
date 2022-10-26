@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: e5cb85bcda92
+Revision ID: 685a92b54320
 Revises: 
-Create Date: 2022-10-24 12:10:12.198909
+Create Date: 2022-10-26 14:54:58.430499
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e5cb85bcda92'
+revision = '685a92b54320'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -28,6 +28,14 @@ def upgrade():
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=120), nullable=False),
     sa.Column('profile_id', sa.Integer(), nullable=True),
+    sa.Column('public_id', sa.String(length=120), nullable=True),
+    sa.Column('muni_firstname', sa.String(length=120), nullable=True),
+    sa.Column('muni_lastname', sa.String(length=120), nullable=True),
+    sa.Column('muni_email', sa.String(length=120), nullable=True),
+    sa.Column('muni_phone', sa.String(length=10), nullable=True),
+    sa.Column('muni_position', sa.String(length=120), nullable=True),
+    sa.Column('municipality', sa.String(length=120), nullable=True),
+    sa.Column('muni_password', sa.String(length=120), nullable=True),
     sa.ForeignKeyConstraint(['profile_id'], ['profile.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

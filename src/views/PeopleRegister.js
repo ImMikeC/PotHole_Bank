@@ -1,17 +1,15 @@
 import React, { useContext, useState } from "react";
-import Button from "../components/Button";
 import "../styles/PeopleRegister.css";
-import PeopleDashboard from "./PeopleDashboard";
+
 import { Link } from "react-router-dom";
 
 const PeopleRegister = () => {
-  //document.body.style.backgroundColor = "#61831F";
+  document.body.style.backgroundColor = "#61831F";
 
   //const { store, actions } = useContext(Context)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cambiar, setCambiar] = useState();
 
   const handleClick = async () => {
     try {
@@ -30,10 +28,7 @@ const PeopleRegister = () => {
           profile_id: 3,
         }),
       };
-      const data = await fetch(
-        "http://localhost:5000/api/management/create-user",
-        opts
-      );
+      const data = await fetch(`${process.env.API_URL}api/management/create-user`, opts);
       console.log({ data });
       const result = await data.json();
       console.log({ result });
@@ -41,8 +36,6 @@ const PeopleRegister = () => {
       console.error("Hay un error, revisa", error);
     }
   };
-
-  //document.body.style.backgroundColor = "#1E4A5F";
 
   return (
     <div className="PeopleRegisterBox d-flex justify-content-center align-items-center">

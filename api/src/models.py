@@ -95,16 +95,20 @@ class Coordinates(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     latitude = db.Column(db.String(20), nullable=False)
     longitude = db.Column(db.String(20))
+    imageurl = db.Column(db.String(200))
+    state = db.Column(db.String(20))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def serialize(self):
         return {
-            "id": self.id,
             "latitude": self.latitude,
             "longitude": self.longitude,
-            "user_id": self.user_id,
+            "imageurl": self.imageurl,
+            "state": self.state,
+            #"user_id": self.user_id,           
 
         }
+
 
     def save(self):
         db.session.add(self)
