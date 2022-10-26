@@ -54,6 +54,7 @@ app.register_blueprint(bpUser, url_prefix='/api')
 app.register_blueprint(bpProfile, url_prefix='/api')
 app.register_blueprint(bpCoordinates, url_prefix='/api')
 app.register_blueprint(bpGallery, url_prefix='/api')
+app.register_blueprint(bpLogin, url_prefix='/api')
 CORS(app)
 if __name__ == '__main__':
     app.run()
