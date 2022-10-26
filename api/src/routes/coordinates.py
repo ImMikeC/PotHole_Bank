@@ -5,40 +5,29 @@ import cloudinary.uploader
 
 bpCoordinates = Blueprint('bpCoordinates', __name__)
 
-@bpCoordinates.route('/coordinates', methods=['GET', 'POST'])
+@bpCoordinates.route('/coordinates', methods=['GET'])
 def coordinates():
-
-    if request.method == 'GET':
-
-        active =  request.args.get('active')
-        if active is not None:
-          status = True if active == 'true' else False
-          coordinates = Coordinates.query.filter_by(active=status)
-          coordinates = list(map(lambda imagen: imagen.serialize(), coordinates))
-          return jsonify(coordinates), 200
-
-        else:
           coordinates = Coordinates.query.all()
           coordinates = list(map(lambda imagen: imagen.serialize(), coordinates))
           return jsonify(coordinates), 200
 
-    """ if request.method == 'POST':
+        # if request.method == 'POST':
         
-        title = request.form['title']
-        active = request.form['active']
-        image = request.files['image']
+        # title = request.form['title']
+        # active = request.form['active']
+        # image = request.files['image']
 
-        resp = cloudinary.uploader.upload(image, folder="gallery")
+        # resp = cloudinary.uploader.upload(image, folder="gallery")
 
-        if not resp: return jsonify({ "msg": "error uploading image"}), 400
+        # if not resp: return jsonify({ "msg": "error uploading image"}), 400
 
-        gallery_image = Gallery()
-        gallery_image.title = title
-        gallery_image.active = True if active == 'true' else False
-        gallery_image.filename = resp['secure_url']
-        gallery_image.save()
+        # gallery_image = Gallery()
+        # gallery_image.title = title
+        # gallery_image.active = True if active == 'true' else False
+        # gallery_image.filename = resp['secure_url']
+        # gallery_image.save()
 
-        return jsonify(gallery_image.serialize()), 200 """
+        # return jsonify(gallery_image.serialize()), 200
 
 
     if request.method == 'POST':
