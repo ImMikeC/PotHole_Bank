@@ -1,8 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Loading from "../../components/Loading"
 
 const Mod = () => {
+    /*     const [users, setUsers] = useState(null);
+    
+        useEffect(() => {
+    
+            getUsers(URL_USERS)
+    
+            return () => { }
+        }, [])
+    
+        const getUsers = (url, options = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }) => {
+    
+            fetch(url, options)
+                .then((response) => {
+                    console.log(response);
+                    return response.json();
+                })
+                .then((response) => {
+                    console.log(response);
+                    setUsers(response);
+                }).catch(e => {
+                    console.log(e);
+                });
+        } */
+
     return (
-        <div className="listrow row d-flex justify-content-center">
+        /*             <ol className="list-group list-group-numbered" >
+                {!!users &&
+                    users.length > 0 ?
+                    users.map((user, index) => {
+                        return (
+                            <li className="list-group-item d-flex justify-content-between align-items-start ">
+                                <div className="ms-3 me-auto">
+                                    <div className="fw-bold">{email}{state}</div>
+                                </div>
+                                <div>
+                                    <FaCamera />
+                                </div>
+                                <div>
+                                    <FaTrashAlt />
+                                </div>
+                            </li>
+                        )
+                    }) :
+                    (
+                        <div className="col-md-12 text-center">
+                            <Loading />
+                        </div>
+                    )}
+            </ol> */
+        < div className = "listrow row d-flex justify-content-center" >
             <div className="listtable col-md-9 mt-5">
                 <table className="table table-dark table-hover">
                     <thead>
@@ -39,7 +93,7 @@ const Mod = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     )
 }
 
