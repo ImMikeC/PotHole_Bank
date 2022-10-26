@@ -4,7 +4,7 @@ const Mod = () => {
     return (
         <div className="listrow row d-flex justify-content-center">
             <div className="listtable col-md-9 mt-5">
-                <table class="table table-dark table-hover">
+                <table className="table table-dark table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

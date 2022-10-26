@@ -1,10 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Loading from "../../components/Loading"
 
 const List = () => {
+/*     const [potholes, setPotholes] = useState(null);
+
+    useEffect(() => {
+
+        getPotholes(URL_POTHOLES)
+
+        return () => { }
+    }, [])
+
+    const getPotholes = (url, options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }) => {
+
+        fetch(url, options)
+            .then((response) => {
+                console.log(response);
+                return response.json();
+            })
+            .then((response) => {
+                console.log(response);
+                setPotholes(response);
+            }).catch(e => {
+                console.log(e);
+            });
+    } */
+
     return (
         <div className="listrow row d-flex justify-content-center">
+{/*             <ol className="list-group list-group-numbered" >
+                {!!potholes &&
+                    potholes.length > 0 ?
+                    potholes.map((pothole, index) => {
+                        return (
+                            <li className="list-group-item d-flex justify-content-between align-items-start ">
+                                <div className="ms-3 me-auto">
+                                    <div className="fw-bold">{latitude}{longitud}</div>
+                                </div>
+                                <div>
+                                    <FaCamera />
+                                </div>
+                                <div>
+                                    <FaTrashAlt />
+                                </div>
+                            </li>
+                        )
+                    }) :
+                    (
+                        <div className="col-md-12 text-center">
+                            <Loading />
+                        </div>
+                    )}
+            </ol> */}
             <div className="listtable col-md-9 mt-5">
-                <table class="table table-dark table-hover">
+                <table className="table table-dark table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -27,7 +81,7 @@ const List = () => {
                             <td>Icon Delete</td>
                         </tr>
                         <tr>
-                        <th scope="row">2</th>
+                            <th scope="row">2</th>
                             <td>-40.451</td>
                             <td>-90.64</td>
                             <td>http://foto2.jpg</td>
@@ -36,7 +90,7 @@ const List = () => {
                             <td>Icon Delete</td>
                         </tr>
                         <tr>
-                        <th scope="row">3</th>
+                            <th scope="row">3</th>
                             <td>-20.451</td>
                             <td>-50.64</td>
                             <td>http://foto3.jpg</td>
