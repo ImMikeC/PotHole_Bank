@@ -16,6 +16,7 @@ const Map = () => {
   const [change, setChange] = useState();
   const [title, setTitle] = useState();
   const [img, setImg] = useState();
+  const [disablebButton, setDisabledButton] = useState(true);
 
   const saveReport = () => {
     location.data.description = change;
@@ -47,6 +48,7 @@ const Map = () => {
   const changeImg = async (e) => {
     console.log(e.target.files[0]);
     const { secure_url } = await saveImg(e.target.files[0]);
+    setDisabledButton(false);
     console.log("aca estoy", secure_url);
     setImg(secure_url);
   };
@@ -121,6 +123,7 @@ const Map = () => {
               onClick={saveReport}
               type="button"
               className="btn btn-primary mt-3"
+              disabled={disablebButton}
             >
               Send Report
             </button>
