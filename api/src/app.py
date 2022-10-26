@@ -41,7 +41,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 db.init_app(app)
 Migrate(app, db)
 jwt = JWTManager(app)
-CORS(app)
 
 cloudinary.config(
     cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'),
@@ -55,7 +54,7 @@ app.register_blueprint(bpUser, url_prefix='/api')
 app.register_blueprint(bpProfile, url_prefix='/api')
 app.register_blueprint(bpCoordinates, url_prefix='/api')
 app.register_blueprint(bpGallery, url_prefix='/api')
-
+CORS(app)
 if __name__ == '__main__':
     app.run()
 
