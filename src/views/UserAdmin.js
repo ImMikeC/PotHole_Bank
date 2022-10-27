@@ -15,7 +15,7 @@ const UserAdmin = () => {
         <hr />
         <ul className="sidebar-links nav flex-column mb-auto">
           <NavLink to="/user/admin/map">Map</NavLink>
-          <NavLink to="/user/admin/List">List</NavLink>
+          <NavLink to="/user/admin/list">List</NavLink>
           <NavLink to="/user/admin/mod">Mod</NavLink>
         </ul>
         <hr />
