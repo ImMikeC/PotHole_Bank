@@ -7,63 +7,6 @@ import { Button } from 'react-bootstrap';
 const List = () => {
     const [potholes, setPotholes] = useState(null);
 
-    /// comentarios
-    const [gallery, setGallery] = useState(null)
-    const [title, setTitle] = useState("");
-    const [active, setActive] = useState(true);
-    const [image, setImage] = useState(null);
-    const [error, setError] = useState(null);
-    const [filter, setFilter] = useState(null);
-
-    useEffect(() => {
-        getImagesGallery(filter);
-    }, [])
-
-    useEffect(() => {
-        getImagesGallery(filter);
-    }, [filter])
-/// comentarios
-const getImagesGallery = async (filter) => {
-    try {
-
-        let query = (filter === null ? "" : filter === true ? "?state='ingresado'" : "?state='reparado'") // validando si filtramos o no el resultado 
-
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/galleries${query}`)
-        const data = await response.json()
-
-        setGallery(data);
-
-    } catch (error) {
-        console.log(error.message)
-    }
-}
-
-/// comentarios
-const handleChangeActive = async (id, status) => {
-    console.log(status);
-    try {
-
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/coordinates/${id}/update-data`, {
-            method: 'PUT',
-            body: JSON.stringify({
-                state: status
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        const data = await response.json()
-        if(data.id){
-            getImagesGallery(filter);
-        }
-
-    } catch (error) {
-        console.log(error.message)
-    }
-}
-/// comentarios
-
-
     useEffect(() => {
 
         getPotholes(`${process.env.API_URL}api/coordinates`)
@@ -118,14 +61,7 @@ const handleChangeActive = async (id, status) => {
                                         <td><img className="imgpreview" src={pothole.imageurl} width="120" height="62"/></td>
                                         <td>{pothole.state}</td>
                                         <td><Button><FaEdit /></Button></td>
-                                        <td>
-                                            {/* <Button onClick={handleChangeActive}><FaTrashAlt /></Button> */}
-                                            <input
-            className="p-1 mt-3 btn btn-primary col-3"
-            type="submit"
-            value={<FaTrashAlt />}
-            onClick={handleChangeActive}
-          />
+                                        <td><Button><FaTrashAlt /></Button>                                            
                                         </td>        
                                     </tr>                                    
                                 )
