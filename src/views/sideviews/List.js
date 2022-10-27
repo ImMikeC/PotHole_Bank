@@ -43,7 +43,7 @@ const handleChangeActive = async (id, status) => {
     console.log(status);
     try {
 
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/coordinates/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/coordinates/${id}/update-data`, {
             method: 'PUT',
             body: JSON.stringify({
                 state: status
@@ -53,7 +53,9 @@ const handleChangeActive = async (id, status) => {
             }
         })
         const data = await response.json()
-        
+        if(data.id){
+            getImagesGallery(filter);
+        }
 
     } catch (error) {
         console.log(error.message)
