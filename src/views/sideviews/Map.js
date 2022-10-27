@@ -61,8 +61,8 @@ const Map = () => {
             <div className="mb-3 col">
               <Autocomplete
                 className="form-control"
-                apiKey={"AIzaSyBZKd9Y_ODlR1FJDtT-r3XVIL9o_Y6phWE"}
-                onPlaceSelected={(place) =>
+                apiKey={"AIzaSyBZKd9Y_ODlR1FJDtT-r3XVIL9o_Y6phWE"}                
+                onPlaceSelected={(place) => {console.log(place.geometry.location.lat())
                   setLocation({
                     Lat: place.geometry.location
                       .lat()
@@ -76,7 +76,7 @@ const Map = () => {
                       status: "In progres",
                     },
                   })
-                }
+                }}
                 options={{
                   types: [],
                 }}

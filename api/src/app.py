@@ -16,6 +16,7 @@ from routes.user import bpUser
 from routes.profile import bpProfile
 from routes.coordinates import bpCoordinates
 from routes.galleries import bpGallery
+from routes.login import bpLogin
 
 load_dotenv()
 
