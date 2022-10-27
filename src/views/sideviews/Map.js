@@ -7,8 +7,6 @@ import { sendor } from "../../data/sensor";
 import "../../styles/Map.css";
 
 const Map = () => {
-  document.body.style.backgroundColor = "#1E4A5F";
-
   const position = [-33.451, -70.64];
 
   const [marker, setMarker] = useState(sendor);
@@ -95,7 +93,7 @@ const Map = () => {
             </div>
             <div className="col mt-4">
               <label for="exampleFormControlTextarea1" className="form-label">
-                Enter a comment for your report
+                Enter a comment for your report.
               </label>
               <textarea
                 onChange={changeInput}
@@ -108,7 +106,7 @@ const Map = () => {
             </div>
             <div className="col mt-4">
               <label for="formFile" class="form-label">
-                Enter photo of your pothole
+                Enter photo of your pothole.
               </label>
               <input
                 onChange={changeImg}
@@ -142,7 +140,8 @@ const Map = () => {
                   position={[parseFloat(park.Lat), parseFloat(park.Long)]}
                 >
                   <Popup>
-                    {park.data.title} <br /> {park.data.description} <br />
+                    {park.data.title} <br /> {park.data.description}
+                    <br />
                     status:{park.data.status} <br />
                     <img className="imagen" src={park.data.url} />
                   </Popup>
