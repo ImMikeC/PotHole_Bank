@@ -3,7 +3,7 @@ const login = async (email, password) => {
     email,
     password,
   };
-  const result = await fetch(`${process.env.API_URL}/api/login`, {
+  const result = await fetch(`${process.env.API_URL}api/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
