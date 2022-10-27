@@ -13,3 +13,10 @@
   margin-top: 2%;
   margin-bottom: 90px;
 }
+
+.alerta {
+  width: 40%;
+  margin-top: 10px;
+  position: relative;
+  left: 30%;
+}

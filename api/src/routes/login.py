@@ -10,8 +10,12 @@ bpLogin = Blueprint('bpLogin', __name__)
 
 @bpLogin.route('/login', methods=['POST'])
 def ingresar():
-    email = request.json.get('email')
-    password = request.json.get('password')
+    data = request.get_json()
+    email = data['email']
+    password = data['password']
+    print("_______________")
+    print(email)
+    print(password)
 
 #Valido el formulario
     ##Dejamos el email como username para el registro
@@ -19,21 +23,19 @@ def ingresar():
     if not password : return jsonify({"status": "error", "code": 400, "mensaje": "La contraseña es requerida"}), 400
 
     usuario = User.query.filter_by(email=email).first()
-
-    check = check_password_hash(usuario.password,password)
-    print(check)
-#Valido si el usuario existe
     if not usuario : return jsonify({"status": "error", "code": 401, "mensaje": "El email o la contraseña está incorrecto"}), 400
+#Valido si el usuario existe
 #Valido si la contraseña ingresada coincide con la guardada
     if not check_password_hash(usuario.password, password) : return jsonify ({"status": "error", "code": 401, "mensaje": "El email o la contraseña está incorrecto"}), 400
 
     # expires = datetime.timedelta(days=1)
-    # access_token = create_access_token(identity = usuario.id, expires_delta =expires)
+    # access_token = create_access_token(identity = usuario.id, expi
+    # res_delta =expires
 
     data = {
     #"access_token" : access_token,
-    "usuario": usuario.serialize()
-}
+        "usuario": usuario.serialize()
+    }
 
     return jsonify({ "status": "éxito", "code": 200, "mensaje": "El usuario ha ingresado exitosamente", "data": data}), 200
     
