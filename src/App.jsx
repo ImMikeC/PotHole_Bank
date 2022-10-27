@@ -43,8 +43,20 @@ const App = ({ copyright }) => {
             <Route path="profile" element={<Profile />} />
             <Route path="settings" element={<Settings />} />
           </Route>
-          <Route path="municipality" element={<UserMuni />} />
-          <Route path="people" element={<UserPeople />} />
+          <Route index element={<User />} />
+          <Route path="muni" element={<UserMuni />}>
+            <Route path="map" element={<Map />} />
+            <Route path="list" element={<List />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
+          <Route index element={<User />} />
+          <Route path="people" element={<UserPeople />}>
+            <Route path="map" element={<Map />} />
+            <Route path="list" element={<List />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
