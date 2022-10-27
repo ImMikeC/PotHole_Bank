@@ -33,7 +33,7 @@ def create_user():
     data = request.get_json()
     print(data)
 
-    hashed_password = generate_password_hash(data['password'], method='sha256')
+    hashed_password = generate_password_hash(data['password'])
 
     new_user = User(
         email=data['email'],
