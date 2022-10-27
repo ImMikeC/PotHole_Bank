@@ -7,8 +7,7 @@ import { sendor } from "../../data/sensor";
 import "../../styles/Map.css";
 
 const Map = () => {
-  const position = [-33.451, -70.64];
-
+  const [position, setPosition] = useState([-33.451, -70.64]);
   const [marker, setMarker] = useState(sendor);
   const [location, setLocation] = useState({});
   const [change, setChange] = useState();
@@ -16,12 +15,18 @@ const Map = () => {
   const [img, setImg] = useState();
   const [disablebButton, setDisabledButton] = useState(true);
 
+  const RecenterAutomatically = ({ lat, lng }) => {
+    const map = useMap();
+    useEffect(() => {
+      map.setView([lat, lng]);
+    }, [lat, lng]);
+    return null;
+  };
+
   const saveReport = () => {
     location.data.description = change;
     location.data.title = title;
     location.data.url = img;
-    console.log(location);
-    console.log(".......", img);
     const newMarker = [...marker.sensors, location];
     const arraySendor = {
       sensors: newMarker,
@@ -59,21 +64,28 @@ const Map = () => {
             <div className="mb-3 col">
               <Autocomplete
                 className="form-control"
-                apiKey={"AIzaSyBZKd9Y_ODlR1FJDtT-r3XVIL9o_Y6phWE"}                
-                onPlaceSelected={(place) => {console.log(place.geometry.location.lat())
+                apiKey={"AIzaSyBZKd9Y_ODlR1FJDtT-r3XVIL9o_Y6phWE"}
+                onPlaceSelected={(place) => {
+                  const latitud = place.geometry.location
+                    .lat()
+                    .toString()
+                    .substring(0, 6);
+                  const longitud = place.geometry.location
+                    .lng()
+                    .toString()
+                    .substring(0, 7);
+                  console.log("latitude", latitud);
+                  console.log("longitude", longitud);
+                  setPosition([parseFloat(latitud), parseFloat(longitud)]);
+                  console.log("position", position);
+                  console.log(place.geometry.location.lat());
                   setLocation({
-                    Lat: place.geometry.location
-                      .lat()
-                      .toString()
-                      .substring(0, 6),
-                    Long: place.geometry.location
-                      .lng()
-                      .toString()
-                      .substring(0, 7),
+                    Lat: latitud,
+                    Long: longitud,
                     data: {
                       status: "In progres",
                     },
-                  })
+                  });
                 }}
                 options={{
                   types: [],
@@ -147,6 +159,7 @@ const Map = () => {
                   </Popup>
                 </Marker>
               ))}
+            <RecenterAutomatically lat={position[0]} lng={position[1]} />
           </MapContainer>
         </div>
       </div>
