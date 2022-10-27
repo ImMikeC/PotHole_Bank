@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../components/Button";
 import "../styles/MuniRegister.css";
 
 const MuniRegister = () => {
@@ -10,7 +9,7 @@ const MuniRegister = () => {
         <h2 className="text-center text-primary">Register</h2>
         <div className="row g-3">
           <div className="col-md-6">
-            <label for="inputEmail4" class="form-label">
+            <label for="inputEmail4" className="form-label">
               First Name
             </label>
             <input
@@ -21,7 +20,7 @@ const MuniRegister = () => {
             />
           </div>
           <div className="col-md-6">
-            <label for="inputEmail4" class="form-label">
+            <label for="inputEmail4" className="form-label">
               Last Name
             </label>
             <input
@@ -33,46 +32,46 @@ const MuniRegister = () => {
           </div>
         </div>
         <div className="row g-3">
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">
+          <div className="col-md-6">
+            <label for="inputEmail4" className="form-label">
               Email
             </label>
             <input
               type="email"
               placeholder="Email"
-              class="form-control"
+              className="form-control"
               id="inputEmail4"
             />
           </div>
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">
+          <div className="col-md-6">
+            <label for="inputEmail4" className="form-label">
               Phone
             </label>
             <input
               type="email"
               placeholder="Phone"
-              class="form-control"
+              className="form-control"
               id="inputEmail4"
             />
           </div>
         </div>
         <div className="row g-3">
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">
+          <div className="col-md-6">
+            <label for="inputEmail4" className="form-label">
               Position
             </label>
             <input
               type="email"
               placeholder="Position"
-              class="form-control"
+              className="form-control"
               id="inputEmail4"
             />
           </div>
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">
+          <div className="col-md-6">
+            <label for="inputEmail4" className="form-label">
               Municipality
             </label>
-            <select class="form-select" aria-label="Default select example">
+            <select className="form-select" aria-label="Default select example">
               <option value="1"></option>
               <option value="2"></option>
               <option value="3"></option>
@@ -80,25 +79,25 @@ const MuniRegister = () => {
           </div>
         </div>
         <div className="row g-3">
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">
+          <div className="col-md-6">
+            <label for="inputPassword4" className="form-label">
               Password
             </label>
             <input
               type="password"
               placeholder="Password"
-              class="form-control"
+              className="form-control"
               id="inputPassword4"
             />
           </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">
+          <div className="col-md-6">
+            <label for="inputPassword4" className="form-label">
               Repeat Password
             </label>
             <input
               type="password"
               placeholder="Repeat Password"
-              class="form-control"
+              className="form-control"
               id="inputPassword4"
             />
           </div>
