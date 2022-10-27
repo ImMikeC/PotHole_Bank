@@ -47,12 +47,31 @@ def create_user():
 
     return jsonify({'message': 'New user created!'}), 200
 
-    # user = User()
-    # user.email = request.json.get('email')
-    # user.password = request.json.get('password')
-    # user.profile_id = request.json.get('profile_id')
-    # user.save()
-    # return jsonify(user.serialize()), 200
+#Createa user municipality
+@bpUser.route('/management/create-municipality', methods=['POST'])
+def create_muni():
+    data = request.get_json()
+
+    muni_hashed_password = generate_password_hash(data['muni_password'])
+
+    new_muni = User(
+        muni_firstname=data['muni_firstname'],
+        muni_lastname=data['muni_lastname'],
+        muni_email=data['muni_email'],
+        muni_phone=data['muni_phone'],
+        muni_password=muni_hashed_password,
+        muni_position=data['muni_position'],
+        municipality=data['municipality'],
+        profile_id=2,
+        public_id=str(uuid.uuid4()),
+    )
+
+    db.session.add(new_muni)
+    db.session.commit()
+
+    return jsonify({'message': 'New user created!'}), 200
+
+
 
 
 @bpUser.route('/management/<email>', methods=['PUT'])

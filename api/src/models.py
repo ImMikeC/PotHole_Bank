@@ -7,8 +7,8 @@ db = SQLAlchemy()
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), nullable=False)# usuario persona
-    password = db.Column(db.String(120), nullable=False)# usuario persona
+    email = db.Column(db.String(120))# usuario persona
+    password = db.Column(db.String(120))# usuario persona
     profile_id = db.Column(db.Integer, db.ForeignKey('profile.id'))
     public_id = db.Column(db.String(120))
     muni_firstname = db.Column(db.String(120))
@@ -23,10 +23,24 @@ class User(db.Model):
 
     def serialize(self):
         return {
-            "id": self.id,
+            "profile_id": self.profile_id,
             "email": self.email,
             "password": self.password
         }
+
+    def serialize_muni(self):
+        return {
+            "muni_firstname":self.muni_firstname,
+            "muni_lastname":self.muni_lastname,
+            "muni_email":self.muni_email,
+            "muni_phone":self.muni_phone,
+            "muni_password":self.muni_hashed_password,
+            "muni_position":self.muni_position,
+            "municipality":self.municipality,
+            "profile_id":self.profile_id,
+            "public_id":self.public_id,
+            }
+
 
     def serialize_with_profile(self):
         return {
