@@ -13,9 +13,9 @@ const NotFound = () => {
             </div>
             <div className="row d-flex justify-content-center">
                 <div className="card notfoundcard">
-                    <div className="row d-flex justify-content-center">
+                    <div className="row notfoundrow d-flex justify-content-center">
                         <div className="col-md-12">
-                            <p className="card-text">Page not found: You reached a pothole in your way. Please come back home.</p>
+                            <p className="card-text notfoundcardtext">Page not found: You reached a pothole in your way. Please come back home.</p>
                         </div>
                     </div>
                     <div className="row d-flex justify-content-center">

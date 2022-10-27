@@ -18,9 +18,12 @@
     margin-bottom: 4rem;
 }
 
-.card {
+
+
+.notfoundcard {
     background-color: #D4D9E0 !important;
     color: #282936;
+    width: 50rem !important;
     margin-bottom: 8%;
     border-radius: 30px;
     border-radius: 1.25rem !important;
@@ -28,7 +31,7 @@
         -15px -15px 30px #ffffff;
 }
 
-.card-text {
+.notfoundcardtext {
     font-size: 20px;
     text-align: center;
     color: #282936;
