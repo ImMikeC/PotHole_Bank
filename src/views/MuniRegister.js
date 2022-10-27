@@ -106,7 +106,7 @@ const MuniRegister = () => {
           <input
             className="p-1 mt-3 btn btn-primary col-2"
             type="submit"
-            value="Login"
+            value="Register"
           />
         </div>
       </div>
