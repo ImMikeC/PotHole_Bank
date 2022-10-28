@@ -3,10 +3,10 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loading from "../../components/Loading";
 import { edit, deleteReport } from "../../helper/coordinates";
 import "../../styles/ListMod.css";
-import { Button } from "react-bootstrap";
 
 const List = () => {
   const [potholes, setPotholes] = useState(null);
+
   const [state, setState] = useState();
 
   useEffect(() => {

@@ -40,8 +40,8 @@ const Mod = () => {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">id</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Rol</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -53,8 +53,8 @@ const Mod = () => {
                                 return (
                                     <tr key={index}>
                                         <th scope="row">{index+1}</th>
-                                        <td>{user.id}</td>
                                         <td className="text-start">{user.email}</td>
+                                        <td>{user.id}</td>
                                         <td><FaEdit /></td>
                                         <td><FaTrashAlt /></td>        
                                     </tr>                                    
