@@ -122,9 +122,9 @@ const MuniRegister = () => {
                 className="form-select"
                 aria-label="Default select example"
               >
-                <option value="1"></option>
-                <option value="2"></option>
-                <option value="3"></option>
+                <option value="1">La Florida</option>
+                <option value="2">Santiago</option>
+                <option value="3">Maipu</option>
               </select>
             </div>
           </div>

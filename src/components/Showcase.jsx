@@ -4,13 +4,13 @@ const Showcase = () => {
 
     const showcasehome = {
         title1: 'One Road Fixed',
-        subtitle1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.1',
+        subtitle1: 'We collect every pothole in the area.',
         imageURL1: './assets/img/Road1.png',
         title2: 'Two Roads Fixed',
-        subtitle2: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.2',
+        subtitle2: 'Sign up and upload your report',
         imageURL2: './assets/img/Road2.png',
         title3: 'Every Road Fixed!',
-        subtitle3: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.3',
+        subtitle3: 'Follow your own reports.',
         imageURL3: './assets/img/Road3.png',
     }
 

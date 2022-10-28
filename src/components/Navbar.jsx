@@ -21,7 +21,7 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li className="nav-item mt-2">
               <NavLink className="nav-link active" to="/">

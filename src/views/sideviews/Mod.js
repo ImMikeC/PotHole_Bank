@@ -54,7 +54,7 @@ const Mod = () => {
                                     <tr key={index}>
                                         <th scope="row">{index+1}</th>
                                         <td className="text-start">{user.email}</td>
-                                        <td>{user.id}</td>
+                                        <td>{user.profile_id}</td>
                                         <td><FaEdit /></td>
                                         <td><FaTrashAlt /></td>        
                                     </tr>                                    
