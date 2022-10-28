@@ -56,9 +56,7 @@ const PeopleRegister = () => {
           <h1 className="text-center text-primary">Register</h1>
           <div className="row g-3">
             <div className="col-md-6">
-              <label htmlFor="inputEmail4" className="form-label">
-                Email
-              </label>
+              <label className="form-label">Email</label>
               <input
                 type="email"
                 placeholder="Email"
@@ -71,9 +69,7 @@ const PeopleRegister = () => {
           </div>
           <div className="row g-3">
             <div className="col-md-6">
-              <label htmlFor="inputPassword4" className="form-label">
-                Password
-              </label>
+              <label className="form-label">Password</label>
               <input
                 type="password"
                 placeholder="Password"
@@ -84,9 +80,7 @@ const PeopleRegister = () => {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="inputPassword4" className="form-label">
-                Repeat Password
-              </label>
+              <label className="form-label">Repeat Password</label>
               <input
                 type="password"
                 placeholder="Repeat Password"

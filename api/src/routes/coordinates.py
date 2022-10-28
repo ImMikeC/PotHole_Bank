@@ -30,14 +30,15 @@ def create_coord():
 
 @bpCoordinates.route('/coordinates/<int:id>/update-data', methods=['PUT'])
 def update_coord(id):
-
+    data = request.get_json()
+    print(data)
     coord = Coordinates.query.filter_by(id=id).first()
 
     if not coord:
         return jsonify({'message': 'No id found'})
 
     #user.password = password
-    coord.state = 'reparado'
+    coord.state = data['state']
     db.session.commit()
 
     return jsonify({'message': 'Estado actualizado'})

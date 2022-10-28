@@ -120,6 +120,7 @@ class Coordinates(db.Model):
             "longitude": self.longitude,
             "imageurl": self.imageurl,
             "state": self.state,
+            "id": self.id
 
         }
 

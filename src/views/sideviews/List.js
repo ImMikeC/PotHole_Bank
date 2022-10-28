@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loading from "../../components/Loading";
+import { edit, deleteReport } from "../../helper/coordinates";
 import "../../styles/ListMod.css";
 import { Button } from "react-bootstrap";
 
 const List = () => {
   const [potholes, setPotholes] = useState(null);
-  console.log("si soy", potholes);
+  const [state, setState] = useState();
 
   useEffect(() => {
     getPotholes(`${process.env.API_URL}api/coordinates`);
-  }, []);
+  }, [state]);
 
   const getPotholes = (
     url,
@@ -21,7 +22,6 @@ const List = () => {
       },
     }
   ) => {
-    console.log(url, "hola");
     fetch(url, options)
       .then((response) => {
         console.log(response);
@@ -36,6 +36,17 @@ const List = () => {
       });
   };
 
+  const changeStateReport = async (e, id) => {
+    const resultState = e.target.checked ? "Resolved" : "Pending";
+    const result = await edit(id, resultState);
+    setState(result);
+  };
+
+  const deleteReportList = async (id) => {
+    const resultDelete = await deleteReport(id);
+    setState(resultDelete);
+  };
+
   return (
     <div className="listrow row d-flex justify-content-center">
       <div className="listtable col-md-9 mt-5">
@@ -47,7 +58,6 @@ const List = () => {
               <th scope="col">Longitude</th>
               <th scope="col">ImageURL</th>
               <th scope="col">State</th>
-              <th scope="col">Edit</th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
@@ -67,14 +77,23 @@ const List = () => {
                         height="62"
                       />
                     </td>
-                    <td>{pothole.state}</td>
                     <td>
-                      <Button>
-                        <FaEdit />
-                      </Button>
+                      <div class="input-group-text">
+                        <input
+                          onChange={(event) =>
+                            changeStateReport(event, pothole.id)
+                          }
+                          className="form-check-input mt-0"
+                          type="checkbox"
+                          checked={pothole.state == "Resolved" ? true : false}
+                          value=""
+                          aria-label="Checkbox for following text input"
+                        />
+                        {pothole.state}
+                      </div>
                     </td>
                     <td>
-                      <Button>
+                      <Button onClick={() => deleteReportList(pothole.id)}>
                         <FaTrashAlt />
                       </Button>
                     </td>
@@ -83,9 +102,7 @@ const List = () => {
               })
             ) : (
               <tr>
-                <td colSpan="7">
-                  <Loading />
-                </td>
+                <td colSpan="7"></td>
               </tr>
             )}
           </tbody>

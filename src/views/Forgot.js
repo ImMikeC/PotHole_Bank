@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import "../styles/Forgot.css";
 
-
 const Forgot = () => {
-
   const [email, setEmail] = useState("");
 
   const handleClick = async () => {
@@ -18,10 +16,13 @@ const Forgot = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: email
+          email: email,
         }),
       };
-      const data = await fetch("http://localhost:5000/api/management/create-user", opts);
+      const data = await fetch(
+        `${process.env.API_URL}api/management/create-user`,
+        opts
+      );
       console.log({ data });
       const result = await data.json();
       console.log({ result });
@@ -37,9 +38,7 @@ const Forgot = () => {
         <h1 className="text-center mb-4 text-primary">Forgot Password</h1>
         <form>
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
-              Email address
-            </label>
+            <label className="form-label">Email address</label>
             <input
               type="email"
               className="form-control"
@@ -49,7 +48,11 @@ const Forgot = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn btn-primary" onClick={handleClick}>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={handleClick}
+          >
             Submit
           </button>
         </form>
