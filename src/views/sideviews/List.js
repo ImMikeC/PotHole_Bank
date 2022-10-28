@@ -68,15 +68,11 @@ const List = () => {
                       />
                     </td>
                     <td>{pothole.state}</td>
-                    <td>
-                      <Button>
-                        <FaEdit />
-                      </Button>
+                    <td>                      
+                        <FaEdit />                      
                     </td>
-                    <td>
-                      <Button>
-                        <FaTrashAlt />
-                      </Button>
+                    <td>                      
+                        <FaTrashAlt />                      
                     </td>
                   </tr>
                 );
