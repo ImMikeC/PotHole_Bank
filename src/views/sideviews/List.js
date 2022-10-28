@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loading from "../../components/Loading";
 import "../../styles/ListMod.css";
-import { Button } from "react-bootstrap";
 
 const List = () => {
   const [potholes, setPotholes] = useState(null);
-  console.log("si soy", potholes);
 
   useEffect(() => {
     getPotholes(`${process.env.API_URL}api/coordinates`);
@@ -21,7 +19,6 @@ const List = () => {
       },
     }
   ) => {
-    console.log(url, "hola");
     fetch(url, options)
       .then((response) => {
         console.log(response);
