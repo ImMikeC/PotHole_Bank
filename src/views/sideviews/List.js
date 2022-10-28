@@ -93,9 +93,9 @@ const List = () => {
                       </div>
                     </td>
                     <td>
-                      <Button onClick={() => deleteReportList(pothole.id)}>
+                      <button onClick={() => deleteReportList(pothole.id)}>
                         <FaTrashAlt />
-                      </Button>
+                      </button>
                     </td>
                   </tr>
                 );
