@@ -35,9 +35,7 @@ const Login = () => {
           <h1 className="text-center text-primary">Login</h1>
           <form onSubmit={(event) => login(event)}>
             <div className="mb-3">
-              <label for="exampleInputEmail1" className="form-label">
-                Email
-              </label>
+              <label className="form-label">Email</label>
               <input
                 onChange={(e) => {
                   console.log("holi");
@@ -51,9 +49,7 @@ const Login = () => {
               />
             </div>
             <div className="mb-3">
-              <label for="exampleInputPassword1" className="form-label">
-                Password
-              </label>
+              <label className="form-label">Password</label>
               <input
                 onChange={(e) => {
                   console.log("password");

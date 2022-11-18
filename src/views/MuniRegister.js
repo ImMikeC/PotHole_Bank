@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../styles/MuniRegister.css";
 
 const MuniRegister = () => {
-
   const [muni_firstname, setmuni_firstname] = useState("");
   const [muni_lastname, setmuni_lastname] = useState("");
   const [muni_email, setmuni_email] = useState("");
@@ -29,10 +28,13 @@ const MuniRegister = () => {
           muni_phone: muni_phone,
           muni_password: muni_password,
           muni_position: muni_position,
-          municipality: municipality          
+          municipality: municipality,
         }),
       };
-      const data = await fetch(`${process.env.API_URL}api/management/create-municipality`, opts);
+      const data = await fetch(
+        `${process.env.API_URL}api/management/create-municipality`,
+        opts
+      );
       console.log({ data });
       const result = await data.json();
       console.log({ result });
@@ -56,9 +58,7 @@ const MuniRegister = () => {
           <h2 className="text-center text-primary">Register</h2>
           <div className="row g-3">
             <div className="col-md-6">
-              <label for="inputEmail4" className="form-label">
-                First Name
-              </label>
+              <label className="form-label">First Name</label>
               <input
                 type="text"
                 className="form-control"
@@ -67,9 +67,7 @@ const MuniRegister = () => {
               />
             </div>
             <div className="col-md-6">
-              <label for="inputEmail4" className="form-label">
-                Last Name
-              </label>
+              <label className="form-label">Last Name</label>
               <input
                 type="text"
                 className="form-control"
@@ -80,9 +78,7 @@ const MuniRegister = () => {
           </div>
           <div className="row g-3">
             <div className="col-md-6">
-              <label for="inputEmail4" className="form-label">
-                Email
-              </label>
+              <label className="form-label">Email</label>
               <input
                 type="email"
                 placeholder="Email"
@@ -91,9 +87,7 @@ const MuniRegister = () => {
               />
             </div>
             <div className="col-md-6">
-              <label for="inputEmail4" className="form-label">
-                Phone
-              </label>
+              <label className="form-label">Phone</label>
               <input
                 type="email"
                 placeholder="Phone"
@@ -104,9 +98,7 @@ const MuniRegister = () => {
           </div>
           <div className="row g-3">
             <div className="col-md-6">
-              <label for="inputEmail4" className="form-label">
-                Position
-              </label>
+              <label className="form-label">Position</label>
               <input
                 type="email"
                 placeholder="Position"
@@ -115,9 +107,7 @@ const MuniRegister = () => {
               />
             </div>
             <div className="col-md-6">
-              <label for="inputEmail4" className="form-label">
-                Municipality
-              </label>
+              <label className="form-label">Municipality</label>
               <select
                 className="form-select"
                 aria-label="Default select example"
@@ -130,9 +120,7 @@ const MuniRegister = () => {
           </div>
           <div className="row g-3">
             <div className="col-md-6">
-              <label for="inputPassword4" className="form-label">
-                Password
-              </label>
+              <label className="form-label">Password</label>
               <input
                 type="password"
                 placeholder="Password"
@@ -141,9 +129,7 @@ const MuniRegister = () => {
               />
             </div>
             <div className="col-md-6">
-              <label for="inputPassword4" className="form-label">
-                Repeat Password
-              </label>
+              <label className="form-label">Repeat Password</label>
               <input
                 type="password"
                 placeholder="Repeat Password"

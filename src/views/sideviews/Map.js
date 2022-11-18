@@ -4,10 +4,12 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import Autocomplete from "react-google-autocomplete";
 import saveImg from "../../helper/saveImg";
 import { sendor } from "../../data/sensor";
+import { icon } from "../../data/icon";
 import "../../styles/Map.css";
 
 const Map = () => {
-  const [position, setPosition] = useState([-33.451, -70.64]);
+  console.log("iconooo", icon);
+  const [position, setPosition] = useState([-33.4510528, -70.6347008]);
   const [marker, setMarker] = useState(sendor);
   const [location, setLocation] = useState({});
   const [change, setChange] = useState();
@@ -23,20 +25,33 @@ const Map = () => {
     return null;
   };
 
+  useEffect(() => {
+    navigator.geolocation.watchPosition((position) => {
+      setPosition([position.coords.latitude, position.coords.longitude]);
+      let api = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+      console.log(api);
+      setLocation({
+        Lat: position.coords.longitude,
+        Long: position.coords.latitude,
+        data: {
+          status: "In progres",
+        },
+      });
+    });
+  }, []);
+
   const saveReport = () => {
     location.data.description = change;
     location.data.title = title;
     location.data.url = img;
     const newMarker = [...marker.sensors, location];
+    console.log(location, "soy location");
+    console.log("soy un new marker", newMarker);
     const arraySendor = {
       sensors: newMarker,
     };
     setMarker(arraySendor);
   };
-
-  useEffect(() => {
-    console.log("mmmm", marker);
-  }, []);
 
   const changeInput = (event) => {
     setChange(event.target.value);
@@ -62,7 +77,7 @@ const Map = () => {
         <div className="report col-4 p-4 mt-5 mx-4 bg-light border rounded-3">
           <div className="reportbox">
             <div className="mb-3 col">
-              <Autocomplete
+              {/* <Autocomplete
                 className="form-control"
                 apiKey={"AIzaSyBZKd9Y_ODlR1FJDtT-r3XVIL9o_Y6phWE"}
                 onPlaceSelected={(place) => {
@@ -90,7 +105,7 @@ const Map = () => {
                 options={{
                   types: [],
                 }}
-              />
+              /> */}
             </div>
 
             <div className="mb-3">
@@ -104,7 +119,7 @@ const Map = () => {
               />
             </div>
             <div className="col mt-4">
-              <label for="exampleFormControlTextarea1" className="form-label">
+              <label className="form-label">
                 Enter a comment for your report.
               </label>
               <textarea
@@ -140,7 +155,7 @@ const Map = () => {
           </div>
         </div>
         <div className="mapbox col-md-6 mt-5">
-          <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+          <MapContainer center={position} zoom={15} scrollWheelZoom={false}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -148,8 +163,9 @@ const Map = () => {
             {marker.sensors.length > 0 &&
               marker.sensors.map((park, index) => (
                 <Marker
+                  icon={icon}
                   key={index}
-                  position={[parseFloat(park.Lat), parseFloat(park.Long)]}
+                  position={[parseFloat(park.Long), parseFloat(park.Lat)]}
                 >
                   <Popup>
                     {park.data.title} <br /> {park.data.description}
