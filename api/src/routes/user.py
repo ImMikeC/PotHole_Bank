@@ -38,7 +38,7 @@ def create_user():
     new_user = User(
         email=data['email'],
         password=hashed_password,
-        profile_id=3,
+        profile_id=data['profile_id'],
         public_id=str(uuid.uuid4()),
     )
 
