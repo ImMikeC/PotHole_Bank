@@ -1,11 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import Autocomplete from "react-google-autocomplete";
+// import Autocomplete from "react-google-autocomplete";
 import saveImg from "../../helper/saveImg";
 import { sendor } from "../../data/sensor";
 import { icon } from "../../data/icon";
 import "../../styles/Map.css";
+import { FaCommentsDollar } from "react-icons/fa";
 
 const Map = () => {
   console.log("iconooo", icon);
@@ -26,7 +27,7 @@ const Map = () => {
   };
 
   useEffect(() => {
-    navigator.geolocation.watchPosition((position) => {
+    navigator.geolocation.getCurrentPosition((position) => {
       setPosition([position.coords.latitude, position.coords.longitude]);
       let api = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
       console.log(api);
@@ -41,6 +42,7 @@ const Map = () => {
   }, []);
 
   const saveReport = () => {
+    console.log("location", location);
     location.data.description = change;
     location.data.title = title;
     location.data.url = img;
