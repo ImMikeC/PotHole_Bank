@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <>
       {message && (
-        <div class="alerta alert alert-primary text-center" role="alert">
+        <div className="alerta alert alert-primary text-center" role="alert">
           {message}
         </div>
       )}

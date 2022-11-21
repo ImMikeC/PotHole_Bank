@@ -142,11 +142,11 @@ const Map = () => {
                 className="form-control"
                 id="exampleFormControlTextarea1"
                 rows="3"
-                maxlength="100"
+                maxLength="100"
               ></textarea>
             </div>
             <div className="col mt-4">
-              <label for="formFile" class="form-label">
+              <label htmlFor="formFile" className="form-label">
                 Enter photo of your pothole.
               </label>
               <input

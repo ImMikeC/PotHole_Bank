@@ -47,7 +47,7 @@ const PeopleRegister = () => {
   return (
     <>
       {message && (
-        <div class="alerta alert alert-primary text-center" role="alert">
+        <div className="alerta alert alert-primary text-center" role="alert">
           Your registration was successful!
         </div>
       )}

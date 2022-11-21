@@ -78,7 +78,7 @@ const List = () => {
                       />
                     </td>
                     <td>
-                      <div class="input-group-text">
+                      <div className="input-group-text">
                         <input
                           onChange={(event) =>
                             changeStateReport(event, pothole.id)
