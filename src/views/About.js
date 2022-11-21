@@ -18,7 +18,7 @@ const About = () => {
                         </div>
                         <div className="col-md-6">
                             <div className="card-body">
-                                <p className="card-text aboutcardtext">Somos una empresa dedicada a la creación de base de datos actualizada a tiempo real de baches en las calles de nuestra ciudad. Con nosotros puedes reportar baches para que sean reparados y seguir su proceso de reparacion.</p>
+                                <p className="card-text aboutcardtext">We are an enterprise dedicated to create a pothole databank updated in real time of bumps on the streets of our city. With us you can report potholes to be repair and keep track of their status thanks to the collaboration of municipalities.</p>
                             </div>
                         </div>
                     </div>
