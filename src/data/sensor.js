@@ -6,8 +6,8 @@ export const sendor = {
       Volt: "6.2",
       CT: "21.1",
       ST: "18.2",
-      Long: "-33.443",
-      Lat: "-70.63",
+      Long: "-33.4510579",
+      Lat: "-70.6398392",
       data: {
         title: "Calles deterioradas1",
         description: "Mal trabajo realizado1",

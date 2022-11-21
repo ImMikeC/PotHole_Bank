@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-// import Autocomplete from "react-google-autocomplete";
+import Autocomplete from "react-google-autocomplete";
 import saveImg from "../../helper/saveImg";
 import { sendor } from "../../data/sensor";
 import { icon } from "../../data/icon";
@@ -26,19 +26,35 @@ const Map = () => {
     return null;
   };
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setPosition([position.coords.latitude, position.coords.longitude]);
-      let api = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-      console.log(api);
-      setLocation({
-        Lat: position.coords.longitude,
-        Long: position.coords.latitude,
-        data: {
-          status: "In progres",
-        },
-      });
+  function success(posicion) {
+    console.log("....");
+    console.log(posicion.coords.latitude, posicion.coords.longitude);
+    console.log("....");
+    setPosition([posicion.coords.latitude, posicion.coords.longitude]);
+    console.log("Seguimoss");
+    setLocation({
+      Lat: posicion.coords.longitude,
+      Long: posicion.coords.latitude,
+      data: {
+        status: "In progres",
+      },
     });
+    console.log("location", location);
+    let api = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+    console.log(api);
+  }
+
+  function error() {
+    alert("No hay posición disponible.");
+  }
+
+  useEffect(() => {
+    const opciones = {
+      enableHighAccuracy: true,
+      maximumAge: 30000,
+      timeout: 27000,
+    };
+    navigator.geolocation.watchPosition(success, error, opciones);
   }, []);
 
   const saveReport = () => {
@@ -79,26 +95,22 @@ const Map = () => {
         <div className="report col-4 p-4 mt-5 mx-4 bg-light border rounded-3">
           <div className="reportbox">
             <div className="mb-3 col">
-              {/* <Autocomplete
+              <Autocomplete
                 className="form-control"
                 apiKey={"AIzaSyBZKd9Y_ODlR1FJDtT-r3XVIL9o_Y6phWE"}
                 onPlaceSelected={(place) => {
-                  const latitud = place.geometry.location
-                    .lat()
-                    .toString()
-                    .substring(0, 6);
-                  const longitud = place.geometry.location
-                    .lng()
-                    .toString()
-                    .substring(0, 7);
+                  const latitud = place.geometry.location.lat();
+
+                  const longitud = place.geometry.location.lng();
+
                   console.log("latitude", latitud);
                   console.log("longitude", longitud);
                   setPosition([parseFloat(latitud), parseFloat(longitud)]);
                   console.log("position", position);
                   console.log(place.geometry.location.lat());
                   setLocation({
-                    Lat: latitud,
-                    Long: longitud,
+                    Lat: longitud,
+                    Long: latitud,
                     data: {
                       status: "In progres",
                     },
@@ -107,7 +119,7 @@ const Map = () => {
                 options={{
                   types: [],
                 }}
-              /> */}
+              />
             </div>
 
             <div className="mb-3">
@@ -157,7 +169,7 @@ const Map = () => {
           </div>
         </div>
         <div className="mapbox col-md-6 mt-5">
-          <MapContainer center={position} zoom={15} scrollWheelZoom={false}>
+          <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
