@@ -14,13 +14,20 @@ const Login = () => {
   const login = async (event) => {
     event.preventDefault();
     const result = await user(email, password);
-    if (result.code == 200) {
-      navigate("/user/admin");
+    if (result.code == 200 && result.data.usuario.profile_id == 1) {
+      navigate("/user/admin/map");
       setMessage(result.mensaje);
-    } else {
+    } else if (result.code == 200 && result.data.usuario.profile_id == 2) {
+      navigate("/user/muni/map");
+      setMessage(result.mensaje);
+    } else if (result.code == 200 && result.data.usuario.profile_id == 3) {
+    navigate("/user/people/map");
+    setMessage(result.mensaje);
+  } else {
       setMessage(result.mensaje);
     }
     console.log(result.mensaje);
+    console.log(result);
   };
 
   return (
