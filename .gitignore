@@ -12,6 +12,7 @@ api/env
 node_modules
 bower_components
 build
+database
 
 *.sublime*
 
