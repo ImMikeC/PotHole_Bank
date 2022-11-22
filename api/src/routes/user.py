@@ -69,28 +69,34 @@ def create_muni():
     db.session.add(new_muni)
     db.session.commit()
 
-    return jsonify({'message': 'New user created!'}), 200
+    return jsonify({'message': 'New muni created!'}), 200
 
 
 
 
-@bpUser.route('/management/<email>', methods=['PUT'])
-def update_user(email):
+@bpUser.route('/management/<int:id>/update_profile_id', methods=['PUT'])
+def update_user_profile_id(id):
+    data = request.get_json()
+    user = User.query.filter_by(id=id).first()
 
-    user = User.query.filter_by(email=email).first()
-
-    if not user:
-        return jsonify({'message': 'No email found'})
-
-    #user.password = password
-    user.profile_id = 1
+    user.profile_id = data['profile_id']
     db.session.commit()
 
-    return jsonify({'message': 'Usuario actualizado'})
+    return jsonify({'message': 'Profile_id updated!'})
+
+@bpUser.route('/management/<int:id>/update_email', methods=['PUT'])
+def update_user_email(id):
+    data = request.get_json()
+    user = User.query.filter_by(id=id).first()
+
+    user.email = data['email']
+    db.session.commit()
+
+    return jsonify({'message': 'User email updated!'})
 
 @bpUser.route('/management/<int:id>', methods=['DELETE'])
 def delete_user(id):
-
+    
     user = User.query.filter_by(id=id).first()
 
     if not user:
@@ -99,4 +105,4 @@ def delete_user(id):
     db.session.delete(user)
     db.session.commit()
 
-    return jsonify({'message': 'El usuario ha sido eliminado'})
+    return jsonify({'message': 'User deleted'})

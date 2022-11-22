@@ -85,7 +85,7 @@ const PeopleRegister = () => {
                 type="password"
                 placeholder="Repeat Password"
                 className="form-control"
-                id="inputPassword4"
+                id="inputPassword5"
               />
             </div>
           </div>

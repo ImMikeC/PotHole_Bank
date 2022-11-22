@@ -57,19 +57,3 @@ def delete_coord(id):
     return jsonify({'message': 'The coordinate has been deleted'})
 
 
-""" 
-{   
-  u'bytes': 29802,
-  u'created_at': u'2017-06-25T17:20:30Z',
-  u'format': u'jpg',
-  u'height': 282,
-  u'public_id': u'hl22acprlomnycgiudor',
-  u'resource_type': u'image',
-  u'secure_url': u'https://res.cloudinary.com/demo/image/upload/v1571218039/hl22acprlomnycgiudor.jpg',
-  u'signature': u'10594f028dbc23e920fd084f8482394798edbc68',
-  u'type': u'upload',
-  u'url': u'http://res.cloudinary.com/demo/image/upload/v1571218039/hl22acprlomnycgiudor.jpg',
-  u'version': 1571218039,
-  u'width': 292
-}
-"""

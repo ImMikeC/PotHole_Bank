@@ -68,13 +68,13 @@ const Login = () => {
                 id="exampleInputPassword1"
               />
             </div>
-            <p className="small">
+            {/* <p className="small">
               <Link to="/change/password">
                 <a className="text-primary" href="forget-password.html">
                   Forgot password?
                 </a>
               </Link>
-            </p>
+            </p> */}
             <div className="d-flex justify-content-center align-items-center">
               <button className="p-1 mb-0 btn btn-primary col-2">Login</button>
             </div>

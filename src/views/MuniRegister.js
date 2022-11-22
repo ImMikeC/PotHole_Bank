@@ -54,7 +54,7 @@ const MuniRegister = () => {
     <>
       {message && (
         <div className="alerta alert alert-primary text-center" role="alert">
-          Your registration was successful!
+          {message}
         </div>
       )}
       <div className="MuniRegisterBox d-flex justify-content-center align-items-center border-success">
@@ -86,11 +86,13 @@ const MuniRegister = () => {
           </div>
           <div className="row g-3">
             <div className="col-md-6">
-              <label className="form-label">Email</label>
+              <label className="form-label" htmlFor="exampleInputEmail1">Email</label>
               <input
                 type="email"
                 placeholder="Email"
-                className="form-control"
+                className="form-control border border-primary"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
                 value={email}
                 onChange={(e) => setmuni_email(e.target.value)}
               />
