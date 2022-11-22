@@ -5,9 +5,25 @@ import { edit, deleteReport } from "../../helper/coordinates";
 import "../../styles/ListMod.css";
 
 const List = () => {
-  const [potholes, setPotholes] = useState(null);
+  const [potholes, setPotholes] = useState([]);
 
   const [state, setState] = useState();
+
+  const [filterStatus, setFilterStatus] = useState("All");
+
+  const filterPotholes = potholes.filter((pothole) => {
+    if (filterStatus === "Resolved") {
+      return pothole.state == "Resolved" 
+    } else if (filterStatus === "Pending") {
+      return pothole.state != "Resolved" 
+    } else {
+      return pothole;
+    }
+  })
+
+  const onFilterPothole = (event) => {
+    setFilterStatus(event.target.value);
+  };
 
   useEffect(() => {
     getPotholes(`${process.env.API_URL}api/coordinates`);
@@ -47,23 +63,32 @@ const List = () => {
     setState(resultDelete);
   };
 
+
   return (
     <div className="listrow row d-flex justify-content-center">
       <div className="listtable col-md-9 mt-5">
         <table className="table table-dark table-hover table-responsive text-center">
-          <thead>
+          <thead className="align-middle">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Latitude</th>
               <th scope="col">Longitude</th>
               <th scope="col">ImageURL</th>
-              <th scope="col">State</th>
+              <th scope="col">
+                <div className="dropdown-center">
+                  <select name="isResolved" onChange={onFilterPothole}>
+                    <option value="All">Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Resolved">Resolved</option>
+                  </select>
+                </div>
+              </th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
-            {!!potholes && potholes.length > 0 ? (
-              potholes.map((pothole, index) => {
+            {!!filterPotholes && filterPotholes.length > 0 ? (
+              filterPotholes.map((pothole, index) => {
                 return (
                   <tr key={index}>
                     <th scope="row">{index + 1}</th>
@@ -78,7 +103,7 @@ const List = () => {
                       />
                     </td>
                     <td>
-                      <div className="input-group-text">
+                      <div className="input-group-text bg-dark text-white">
                         <input
                           onChange={(event) =>
                             changeStateReport(event, pothole.id)
@@ -87,7 +112,7 @@ const List = () => {
                           type="checkbox"
                           checked={pothole.state == "Resolved" ? true : false}
                           value=""
-                          aria-label="Checkbox for following text input"
+                          aria-label="Checkbox htmlFor following text input"
                         />
                         {pothole.state}
                       </div>

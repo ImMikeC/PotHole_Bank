@@ -4,7 +4,35 @@ import Loading from "../../components/Loading"
 import "../../styles/ListMod.css";
 
 const Mod = () => {
-    const [users, setUsers] = useState(null);
+    const [users, setUsers] = useState([]);
+
+    const [filterRol, setFilterRol] = useState("All");
+
+    const filterUsers = users.filter((user) => {
+        if (filterRol === "1") {
+            return user.profile_id == 1
+        } else if (filterRol === "2") {
+            return user.profile_id == 2
+        } else if (filterRol == "3") {
+            return user.profile_id == 3
+        } else {
+            return user;
+        }
+    })
+
+    const onFilterRol = (event) => {
+        setFilterRol(event.target.value);
+    };
+
+    const changeRolName = (user) => {
+        if (user.profile_id == 1) {
+            return "Admin"
+        } else if (user.profile_id == 2) {
+            return "Municipality"
+        } else if (user.profile_id == 3) {
+            return "People"
+        }
+    };
 
     useEffect(() => {
 
@@ -40,24 +68,33 @@ const Mod = () => {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Rol</th>
+                            <th scope="col" className='text-start'>Email</th>
+                            <th scope="col" className='text-start'>
+                                <div className="dropdown-center">
+                                    <select name="Rol" onChange={onFilterRol}>
+                                        <option value="All">Rol</option>
+                                        <option value="1">Admin</option>
+                                        <option value="2">Municipality</option>
+                                        <option value="3">People</option>
+                                    </select>
+                                </div>
+                            </th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {!!users &&
-                            users.length > 0 ?
-                            users.map((user, index) => {
+                        {!!filterUsers &&
+                            filterUsers.length > 0 ?
+                            filterUsers.map((user, index) => {
                                 return (
                                     <tr key={index}>
-                                        <th scope="row">{index+1}</th>
+                                        <th scope="row">{index + 1}</th>
                                         <td className="text-start">{user.email}</td>
-                                        <td>{user.profile_id}</td>
+                                        <td className='text-start'>{changeRolName(user)}</td>
                                         <td><FaEdit /></td>
-                                        <td><FaTrashAlt /></td>        
-                                    </tr>                                    
+                                        <td><FaTrashAlt /></td>
+                                    </tr>
                                 )
                             }) :
                             (

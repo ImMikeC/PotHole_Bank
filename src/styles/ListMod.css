@@ -2,3 +2,18 @@
     width: 100%;
     max-height: 80vh;
 }
+
+.form-check-input {
+    margin-right: 12px;
+}
+
+select {
+    background-color: #212529;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.input-group-text {
+    width: 120px;
+}
