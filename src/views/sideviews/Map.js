@@ -1,12 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import Autocomplete from "react-google-autocomplete";
-import saveImg from "../../helper/saveImg";
 import { sendor } from "../../data/sensor";
 import { icon } from "../../data/icon";
+import Autocomplete from "react-google-autocomplete";
+import saveImg from "../../helper/saveImg";
 import "../../styles/Map.css";
-import { FaCommentsDollar } from "react-icons/fa";
 
 const Map = () => {
   console.log("iconooo", icon);
