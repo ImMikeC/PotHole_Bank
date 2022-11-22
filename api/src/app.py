@@ -29,16 +29,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////workspace/ProyectoFinalFront
 #db = SQLAlchemy(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-
-""" class Agenda(db.Model):
-    __tablename__ = 'agendas'
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-
-    def __repr__(self):
-        return "<Agenda %r>" % self.name
- """
-
 db.init_app(app)
 Migrate(app, db)
 jwt = JWTManager(app)
