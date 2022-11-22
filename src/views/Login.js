@@ -3,16 +3,35 @@ import LinkLogin from "../components/LinkLogin";
 import { Link, useNavigate } from "react-router-dom";
 import user from "../helper/user";
 import "../styles/Login.css";
+import { validateEmail, validInput } from "../helper/checkedForm";
 
 const Login = () => {
   const navigate = useNavigate();
   document.body.style.backgroundColor = "#1E4A5F";
   const [email, setEmail] = useState();
+  const [formChecked, setFormChecked] = useState({
+    email: "",
+    password: "",
+  });
+
   const [password, setPassword] = useState();
   const [message, setMessage] = useState(false);
 
   const login = async (event) => {
     event.preventDefault();
+    const resultEmail = validateEmail(email);
+    const objectValidation = {};
+    if (!resultEmail) {
+      objectValidation.email = "Wrong email!";
+    }
+    if (validInput(password)) {
+      objectValidation.password = "You must complete the field";
+    }
+    if (objectValidation.email || objectValidation.password) {
+      setFormChecked(objectValidation);
+      return;
+    }
+
     const result = await user(email, password);
     if (result.code == 200 && result.data.usuario.profile_id == 1) {
       navigate("/user/admin/map");
@@ -21,13 +40,11 @@ const Login = () => {
       navigate("/user/muni/map");
       setMessage(result.mensaje);
     } else if (result.code == 200 && result.data.usuario.profile_id == 3) {
-    navigate("/user/people/map");
-    setMessage(result.mensaje);
-  } else {
+      navigate("/user/people/map");
+      setMessage(result.mensaje);
+    } else {
       setMessage(result.mensaje);
     }
-    console.log(result.mensaje);
-    console.log(result);
   };
 
   return (
@@ -49,11 +66,14 @@ const Login = () => {
                   setEmail(e.target.value);
                 }}
                 value={email}
-                type="email"
+                type="text"
                 className="form-control border border-primary"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
               />
+              {formChecked.email && (
+                <span className="text-danger">{formChecked.email}</span>
+              )}
             </div>
             <div className="mb-3">
               <label className="form-label">Password</label>
@@ -68,13 +88,16 @@ const Login = () => {
                 id="exampleInputPassword1"
               />
             </div>
-            {/* <p className="small">
+            {formChecked.password && (
+              <span className="text-danger">{formChecked.password}</span>
+            )}
+            <p className="small mt-1">
               <Link to="/change/password">
                 <a className="text-primary" href="forget-password.html">
                   Forgot password?
                 </a>
               </Link>
-            </p> */}
+            </p>
             <div className="d-flex justify-content-center align-items-center">
               <button className="p-1 mb-0 btn btn-primary col-2">Login</button>
             </div>
