@@ -37,7 +37,7 @@ const PeopleRegister = () => {
       const result = await data.json();
       console.log({ result });
       if (result) {
-        setMessage("registro exitoso!");
+        setMessage("¡Registro Exitoso!");
       }
     } catch (error) {
       console.error("Hay un error, revisa", error);

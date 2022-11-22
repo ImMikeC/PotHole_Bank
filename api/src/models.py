@@ -96,14 +96,6 @@ class Profile(db.Model):
         db.session.delete(self)
         db.session.commit() 
 
-"""     def serialize_with_coordinates(self):
-        return {
-            "id": self.id,
-            "profilename": self.profilename,
-            "coordinates": [contact.serialize() for contact in self.coordinates]
-        } """
-
-
 
 
 class Coordinates(db.Model):

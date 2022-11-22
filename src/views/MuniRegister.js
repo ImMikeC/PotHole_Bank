@@ -4,11 +4,12 @@ import "../styles/MuniRegister.css";
 const MuniRegister = () => {
   const [muni_firstname, setmuni_firstname] = useState("");
   const [muni_lastname, setmuni_lastname] = useState("");
-  const [muni_email, setmuni_email] = useState("");
+  const [email, setmuni_email] = useState("");
   const [muni_phone, setmuni_phone] = useState("");
-  const [muni_password, setmuni_password] = useState("");
+  const [password, setmuni_password] = useState("");
   const [muni_position, setmuni_position] = useState("");
   const [municipality, setmunicipality] = useState("");
+  const [message, setMessage] = useState(false);
 
   const handleClick = async () => {
     try {
@@ -24,11 +25,12 @@ const MuniRegister = () => {
         body: JSON.stringify({
           muni_firstname: muni_firstname,
           muni_lastname: muni_lastname,
-          muni_email: muni_email,
+          email: email,
           muni_phone: muni_phone,
-          muni_password: muni_password,
+          password: password,
           muni_position: muni_position,
           municipality: municipality,
+          profile_id: 2,
         }),
       };
       const data = await fetch(
@@ -38,17 +40,19 @@ const MuniRegister = () => {
       console.log({ data });
       const result = await data.json();
       console.log({ result });
+      if (result) {
+        setMessage("¡Registro Exitoso!");
+      }
     } catch (error) {
       console.error("Hay un error, revisa", error);
     }
   };
 
   document.body.style.backgroundColor = "#0e66a3";
-  const [messageMuni, setMessageMUni] = useState(false);
 
   return (
     <>
-      {messageMuni && (
+      {message && (
         <div className="alerta alert alert-primary text-center" role="alert">
           Your registration was successful!
         </div>
@@ -64,6 +68,8 @@ const MuniRegister = () => {
                 className="form-control"
                 placeholder="First name"
                 aria-label="First name"
+                value={muni_firstname}
+                onChange={(e) => setmuni_firstname(e.target.value)}
               />
             </div>
             <div className="col-md-6">
@@ -73,6 +79,8 @@ const MuniRegister = () => {
                 className="form-control"
                 placeholder="Last name"
                 aria-label="Last name"
+                value={muni_lastname}
+                onChange={(e) => setmuni_lastname(e.target.value)}
               />
             </div>
           </div>
@@ -83,7 +91,8 @@ const MuniRegister = () => {
                 type="email"
                 placeholder="Email"
                 className="form-control"
-                id="inputEmail4"
+                value={email}
+                onChange={(e) => setmuni_email(e.target.value)}
               />
             </div>
             <div className="col-md-6">
@@ -92,7 +101,8 @@ const MuniRegister = () => {
                 type="email"
                 placeholder="Phone"
                 className="form-control"
-                id="inputEmail4"
+                value={muni_phone}
+                onChange={(e) => setmuni_phone(e.target.value)}
               />
             </div>
           </div>
@@ -103,7 +113,8 @@ const MuniRegister = () => {
                 type="email"
                 placeholder="Position"
                 className="form-control"
-                id="inputEmail4"
+                value={muni_position}
+                onChange={(e) => setmuni_position(e.target.value)}
               />
             </div>
             <div className="col-md-6">
@@ -112,9 +123,10 @@ const MuniRegister = () => {
                 className="form-select"
                 aria-label="Default select example"
               >
-                <option value="1">La Florida</option>
-                <option value="2">Santiago</option>
-                <option value="3">Maipu</option>
+                <option value={municipality}>La Florida</option>
+                <option value={municipality}>Santiago</option>
+                <option value={municipality}>Maipu</option>
+                onChange={(e) => setmunicipality(e.target.value)}
               </select>
             </div>
           </div>
@@ -125,7 +137,8 @@ const MuniRegister = () => {
                 type="password"
                 placeholder="Password"
                 className="form-control"
-                id="inputPassword4"
+                value={password}
+                onChange={(e) => setmuni_password(e.target.value)}
               />
             </div>
             <div className="col-md-6">
@@ -143,6 +156,7 @@ const MuniRegister = () => {
               className="p-1 mt-3 btn btn-primary col-2"
               type="submit"
               value="Register"
+              onClick={handleClick}
             />
           </div>
         </div>

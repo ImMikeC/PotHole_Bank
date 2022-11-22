@@ -119,7 +119,7 @@ const List = () => {
                     </td>
                     <td>
                       <button onClick={() => deleteReportList(pothole.id)}>
-                      <td><FcCancel /></td>
+                      <FcCancel />
                       </button>
                       
                     </td>
