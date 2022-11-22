@@ -25,7 +25,8 @@ class User(db.Model):
         return {
             "profile_id": self.profile_id,
             "email": self.email,
-            "password": self.password
+            "password": self.password,
+            "id": self.id
         }
 
     def serialize_muni(self):

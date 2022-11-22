@@ -45,7 +45,7 @@ const Map = () => {
   }
 
   function error() {
-    alert("No hay posición disponible.");
+    console.log("No hay posición disponible.");
   }
 
   useEffect(() => {

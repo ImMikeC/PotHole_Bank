@@ -88,13 +88,13 @@ def update_user(email):
 
     return jsonify({'message': 'Usuario actualizado'})
 
-@bpUser.route('/management/<email>', methods=['DELETE'])
-def delete_user(email):
+@bpUser.route('/management/<int:id>', methods=['DELETE'])
+def delete_user(id):
 
-    user = User.query.filter_by(email=email).first()
+    user = User.query.filter_by(id=id).first()
 
     if not user:
-        return jsonify({'message': 'Correo no encontrado'})
+        return jsonify({'message': 'id not found'})
 
     db.session.delete(user)
     db.session.commit()

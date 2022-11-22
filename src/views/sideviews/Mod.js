@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
+import { FcCancel } from "react-icons/fc";
 import Loading from "../../components/Loading"
 import "../../styles/ListMod.css";
+import { deleteUser } from "../../helper/coordinates";
 
 const Mod = () => {
     const [users, setUsers] = useState([]);
 
     const [filterRol, setFilterRol] = useState("All");
+
+    const [state, setState] = useState();
 
     const filterUsers = users.filter((user) => {
         if (filterRol === "1") {
@@ -37,9 +41,7 @@ const Mod = () => {
     useEffect(() => {
 
         getUsers(`${process.env.API_URL}api/users`)
-
-        return () => { }
-    }, [])
+    }, [state])
 
     const getUsers = (url, options = {
         method: 'GET',
@@ -60,6 +62,11 @@ const Mod = () => {
                 console.log(e);
             });
     }
+
+    const deleteUserId = async (id) => {
+        const resultDelete = await deleteUser(id);
+        setState(resultDelete);
+    };
 
     return (
         <div className="modrow row d-flex justify-content-center">
@@ -93,7 +100,10 @@ const Mod = () => {
                                         <td className="text-start">{user.email}</td>
                                         <td className='text-start'>{changeRolName(user)}</td>
                                         <td><FaEdit /></td>
-                                        <td><FaTrashAlt /></td>
+                                        <td><button onClick={() => deleteUserId(user.id)}>
+                                            <FcCancel />
+                                        </button>
+                                        </td>
                                     </tr>
                                 )
                             }) :

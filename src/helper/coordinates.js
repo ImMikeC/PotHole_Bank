@@ -27,3 +27,18 @@ export const deleteReport = async (id) => {
   );
   return await result.json();
 };
+
+export const deleteUser = async (id) => {
+  const result = await fetch(
+    `${process.env.API_URL}api/management/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({}),
+    }
+  );
+  return await result.json();
+};

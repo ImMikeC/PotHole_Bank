@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FcCancel } from "react-icons/fc";
 import Loading from "../../components/Loading";
 import { edit, deleteReport } from "../../helper/coordinates";
 import "../../styles/ListMod.css";
@@ -12,10 +12,10 @@ const List = () => {
   const [filterStatus, setFilterStatus] = useState("All");
 
   const filterPotholes = potholes.filter((pothole) => {
-    if (filterStatus === "Resolved") {
-      return pothole.state == "Resolved" 
+    if (filterStatus === "Solved") {
+      return pothole.state == "Solved" 
     } else if (filterStatus === "Pending") {
-      return pothole.state != "Resolved" 
+      return pothole.state != "Solved" 
     } else {
       return pothole;
     }
@@ -53,7 +53,7 @@ const List = () => {
   };
 
   const changeStateReport = async (e, id) => {
-    const resultState = e.target.checked ? "Resolved" : "Pending";
+    const resultState = e.target.checked ? "Solved" : "Pending";
     const result = await edit(id, resultState);
     setState(result);
   };
@@ -76,10 +76,10 @@ const List = () => {
               <th scope="col">ImageURL</th>
               <th scope="col">
                 <div className="dropdown-center">
-                  <select name="isResolved" onChange={onFilterPothole}>
-                    <option value="All">Status</option>
+                  <select name="isSolved" onChange={onFilterPothole}>
+                    <option value="All">All</option>
                     <option value="Pending">Pending</option>
-                    <option value="Resolved">Resolved</option>
+                    <option value="Solved">Solved</option>
                   </select>
                 </div>
               </th>
@@ -110,7 +110,7 @@ const List = () => {
                           }
                           className="form-check-input mt-0"
                           type="checkbox"
-                          checked={pothole.state == "Resolved" ? true : false}
+                          checked={pothole.state == "Solved" ? true : false}
                           value=""
                           aria-label="Checkbox htmlFor following text input"
                         />
@@ -119,8 +119,9 @@ const List = () => {
                     </td>
                     <td>
                       <button onClick={() => deleteReportList(pothole.id)}>
-                        <FaTrashAlt />
+                      <td><FcCancel /></td>
                       </button>
+                      
                     </td>
                   </tr>
                 );
