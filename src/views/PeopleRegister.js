@@ -74,7 +74,7 @@ const PeopleRegister = () => {
 				}),
 			};
 			const data = await fetch(
-				`${process.env.API_URL}/api/management/create-user`,
+				`${process.env.API_URL}api/management/create-user`,
 				opts
 			);
 			console.log({ data });

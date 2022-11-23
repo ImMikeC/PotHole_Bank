@@ -62,7 +62,7 @@ def create_muni():
         password=hashed_password,
         muni_position=data['muni_position'],
         municipality=data['municipality'],
-        # profile_id= data['profile_id'],
+        profile_id= data['profile_id'],
         public_id=str(uuid.uuid4()),
     )
 

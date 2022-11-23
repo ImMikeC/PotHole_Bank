@@ -30,7 +30,7 @@ export const validateEmail = (emailField) => {
   
   export const validPhone = (number) => {
     let numberValid = /^[0-9]+$/;
-    if (numberValid.test(number) && number.length == 9) {
+    if (numberValid.test(number) && number.length == 11) {
       return true;
     } else {
       return false;
