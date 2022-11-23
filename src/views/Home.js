@@ -1,6 +1,6 @@
 import React from "react";
-import Showcase from "../components/Showcase";
 import { FaCamera, FaCarCrash, FaCheck, FaMapMarkedAlt } from "react-icons/fa";
+import Showcase from "../components/Showcase";
 import "../styles/Home.css";
 
 const Home = () => {

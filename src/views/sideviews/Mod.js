@@ -70,7 +70,7 @@ const Mod = () => {
 
     return (
         <div className="modrow row d-flex justify-content-center">
-            <div className="modtable col-md-9 mt-5">
+            <div className="modtable col-md-9 my-5">
                 <table className="table table-dark table-hover table-responsive text-center">
                     <thead>
                         <tr>

@@ -18,14 +18,14 @@ def ingresar():
     print(password)
 
 
-    if not email: return jsonify({"status": "error", "code":400, "mensaje": "El email del usuario es requerido"}), 400
-    if not password : return jsonify({"status": "error", "code": 400, "mensaje": "La contraseña es requerida"}), 400
+    if not email: return jsonify({"status": "error", "code":400, "mensaje": "User's email is required"}), 400
+    if not password : return jsonify({"status": "error", "code": 400, "mensaje": "User's password is required"}), 400
 
     usuario = User.query.filter_by(email=email).first()
-    if not usuario : return jsonify({"status": "error", "code": 401, "mensaje": "El email o la contraseña está incorrecto"}), 400
+    if not usuario : return jsonify({"status": "error", "code": 401, "mensaje": "User's email or password is incorrect"}), 400
 #Valido si el usuario existe
 #Valido si la contraseña ingresada coincide con la guardada
-    if not check_password_hash(usuario.password, password) : return jsonify ({"status": "error", "code": 401, "mensaje": "El email o la contraseña está incorrecto"}), 400
+    if not check_password_hash(usuario.password, password) : return jsonify ({"status": "error", "code": 401, "mensaje": "User's email or password is incorrect"}), 400
 
     # expires = datetime.timedelta(days=1)
     # access_token = create_access_token(identity = usuario.id, expi
@@ -36,6 +36,6 @@ def ingresar():
         "usuario": usuario.serialize()
     }
 
-    return jsonify({ "status": "éxito", "code": 200, "mensaje": "El usuario ha ingresado exitosamente", "data": data}), 200
+    return jsonify({ "status": "éxito", "code": 200, "mensaje": "User has logged in correctly", "data": data}), 200
     
         
