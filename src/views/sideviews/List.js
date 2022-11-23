@@ -66,8 +66,8 @@ const List = () => {
 
 	return (
 		<div className="listrow row d-flex justify-content-center">
-			<div className="listtable col-md-9 mt-5">
-				<table className="table table-dark table-hover table-responsive text-center">
+			<div className="listtable col-md-9 mt-4">
+				<table className="table table-dark table-hover table-responsive text-start">
 					<thead className="align-middle">
 						<tr>
 							<th scope="col">#</th>
